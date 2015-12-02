@@ -1,4 +1,4 @@
-package com.witl.kalimba.webplayer;
+package com.witl.kalimba.webplayer.common;
 
 /*@auther : Ambarish Kumar
  * 

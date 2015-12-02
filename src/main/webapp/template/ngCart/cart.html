@@ -5,17 +5,126 @@ tr.bottom td { border-bottom: 1px solid #DDDDDD; }
 tr.row td:first-child { border-left: thin solid black; }
 tr.row td:last-child { border-right: thin solid black; }
 
+ .spinner {
+    position: fixed;
+    /* top: 50%;
+    left: 50%; */
+   /*  margin-left: 50px; */ /* half width of the spinner gif */
+    /* margin-top: -50px;  *//* half height of the spinner gif */
+    text-align:center;
+    z-index:1234;
+    overflow: auto;
+    width: 100%; /* width of the spinner gif */
+    height: 100%; /*hight of the spinner gif +2px to fix IE8 issue */
+    background-color: rgba(0,0,0,0.5)
+  
+} 
+
+
+
+#loading {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(192, 192, 192, 0.5);
+    background-image: url("http://i.stack.imgur.com/MnyxU.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
 </style>
+<!-- <script src="bower_components/angular-loading-overlay/dist/angular-loading-overlay.js"></script> -->
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#spinner").bind("ajaxSend", function() {
+        $(this).show();
+    }).bind("ajaxStop", function() {
+        $(this).hide();
+    }).bind("ajaxError", function() {
+        $(this).hide();
+    });
+ 
+     });
+</script>
+
+ <script type="text/javascript">
+ $(document).ready(function(){
+     $('#sendToken').click(function() {
+         
+         $('#spinner').show();
+     });
+ });
+ </script> 
 
 
+<script type="text/javascript">
+function onReady() {
+
+    var intervalID = window.setInterval(checkReady, 5000);
+
+    
+    
+    function checkReady() {
+       
+            window.clearInterval(intervalID);
+            callback.call(this);
+        
+    }
+
+    var scope = angular
+	.element(
+			document
+					.getElementById("sendToken"))
+	.scope();
+    scope.$apply(function() {
+    scope.sendToken();
+    });
+}
+
+function show(id, value) {
+    document.getElementById(id).style.display = value ? 'block' : 'none';
+}
+
+/* onReady(function () {
+    show("template/ngCart/addtocart.html", true);
+    show('loading', false);
+}); */
+
+
+
+
+</script>
+
+<style>
+        #page{
+            diplay:none;
+        }
+        #laoding{
+            display:block;
+        }
+    </style>
+    <script>
+        function myFunction()
+        {
+            document.getElementById("page").style.display = "block";
+            document.getElementById("loading").style.diplay = "none";
+        }
+    </script>
+
+ 
 </head>
-<!-- <div class="alert alert-warning" role="alert" ng-show="ngCart.getTotalItems() === 0">
-    Your cart is empty
-</div>
- -->
-<div class="table-responsive col-lg-12" ng-show="ngCart.getTotalItems() > 0" id="template/ngCart/addtocart.html" style="padding-bottom:50px" >
 
-    <table class="table table-striped ngCart cart table title"  cellspacing="0px" cellpading="50px" style="width: 500px"  >
+
+
+
+<div class="table-responsive col-lg-12"   ng-show="ngCart.getTotalItems() > 0" id="template/ngCart/addtocart.html" style="padding-bottom:50px"  >
+
+    <table class="table table-striped ngCart cart table title"  cellspacing="0px" cellpading="50px" style="width: 450px"  >
 
         <thead >
         <tr style="height: 50px"  >
@@ -43,21 +152,25 @@ tr.row td:last-child { border-right: thin solid black; }
             <td style="height: 25px;width: 20px;"></td>
 
             <td align="left">{{ item.getName() }}</td>
-            <td align="left"><span class="glyphicon glyphicon-minus" ng-class="{'disabled':item.getQuantity()==1}"
-                      ng-click="item.setQuantity(-1, true)"></span>
+            <td align="left"><span class="glyphicon" ></span>
                 {{ item.getImg() }}
-                <span class="glyphicon glyphicon-plus" ng-click="item.setQuantity(1, true)"></span></td>
-            <td align="left">{{ item.getPrice() | currency}} </td>
+                <span class="glyphicon" ></span></td>
+            <td align="left"> {{ item.getPrice() | currency}} </td>
             <td><span ng-click="ngCart.removeItemById(item.getId())">Remove</span></td>
             
         </tr>
-      <!--  <tr align="center"><button class="btn btn-primary" >proceedtocheckout</button></tr> -->
+     
         </tbody>
         
     </table>
-    
-    <a class="button" style = "right:30px" >Proceed to Payment</a>
+    <!-- <form action="/getToken">
+    <input type="submit" value="submit"> 
+    </form>-->
+   
+  <a id="sendToken" class="button" style = "right:30px"   ng-click="sendToken()"  >Proceed to Payment</a> 
 </div>
+
+
 <style>
     .ngCart.cart span[ng-click] {
         cursor: pointer;

@@ -1,50 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
 
-   <display-name>Kalimba.Kalimba-0.0.1-SNAPSHOT</display-name>
-  
-  <description>Database</description>
-  <resource-ref>
-    <description>DB Connection</description>
-    <res-ref-name>jdbc/Spring_Tutorial</res-ref-name>
-    <res-type>javax.sql.DataSource</res-type>
-    <res-auth>Container</res-auth>
-  </resource-ref>
-  <!--  <servlet>
-            <servlet-name>dispatcher</servlet-name>
-            <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-            <init-param>
-                <param-name>contextConfigLocation</param-name>
-                <param-value>/WEB-INF/mvc-dispatcher-servlet.xml</param-value>
-            </init-param>
-            <load-on-startup>1</load-on-startup>
-    </servlet>
-  
- 
-  <context-param>
-	<param-name>contextConfigLocation</param-name>
-	<param-value>/WEB-INF/Spring/applicationContext.xml</param-value>
-  </context-param>
- 
-  <listener>
-    <listener-class>
-          org.springframework.web.context.ContextLoaderListener
-    </listener-class>
-  </listener>
-  <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-</listener>
-  
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>kalimba.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>-->
-  
-  <display-name>KalimbaWebPlayer</display-name>
+	<display-name>Kalimba.Kalimba-0.0.1-SNAPSHOT</display-name>
+
+	<description>Database</description>
+	<resource-ref>
+		<description>DB Connection</description>
+		<res-ref-name>jdbc/Spring_Tutorial</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+
+	
+
+	<!-- <servlet> <servlet-name>dispatcher</servlet-name> <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class> 
+		<init-param> <param-name>contextConfigLocation</param-name> <param-value>/WEB-INF/mvc-dispatcher-servlet.xml</param-value> 
+		</init-param> <load-on-startup>1</load-on-startup> </servlet> <context-param> 
+		<param-name>contextConfigLocation</param-name> <param-value>/WEB-INF/Spring/applicationContext.xml</param-value> 
+		</context-param> <listener> <listener-class> org.springframework.web.context.ContextLoaderListener 
+		</listener-class> </listener> <listener> <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class> 
+		</listener> <welcome-file-list> <welcome-file>index.html</welcome-file> <welcome-file>index.htm</welcome-file> 
+		<welcome-file>kalimba.jsp</welcome-file> <welcome-file>default.html</welcome-file> 
+		<welcome-file>default.htm</welcome-file> <welcome-file>default.jsp</welcome-file> 
+		</welcome-file-list> -->
+
+	<display-name>KalimbaWebPlayer</display-name>
 	<context-param>
 		<param-name>contextClass</param-name>
 		<param-value>
@@ -74,47 +57,62 @@
 		<servlet-name>SpringDispatcher</servlet-name>
 		<url-pattern>/saveUser</url-pattern>
 	</servlet-mapping>
-	<!-- <servlet-mapping>
-		<servlet-name>SpringDispatcher</servlet-name>
-		<url-pattern>/uploadController</url-pattern>
-	</servlet-mapping>
 
 	<servlet-mapping>
 		<servlet-name>SpringDispatcher</servlet-name>
-		<url-pattern>/playerController</url-pattern>
+		<url-pattern>/getToken</url-pattern>
+	</servlet-mapping>
+	
+		<servlet-mapping>
+		<servlet-name>SpringDispatcher</servlet-name>
+		<url-pattern>/getTransaction</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>SpringDispatcher</servlet-name>
-		<url-pattern>/AdUserLogin</url-pattern>
+		<url-pattern>/getDownloadValidation</url-pattern>
 	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>SpringDispatcher</servlet-name>
-		<url-pattern>/ADUserRegister</url-pattern>
-	</servlet-mapping>-->
+	
+	
+	<!-- <servlet-mapping> <servlet-name>SpringDispatcher</servlet-name> <url-pattern>/uploadController</url-pattern> 
+		</servlet-mapping> <servlet-mapping> <servlet-name>SpringDispatcher</servlet-name> 
+		<url-pattern>/playerController</url-pattern> </servlet-mapping> <servlet-mapping> 
+		<servlet-name>SpringDispatcher</servlet-name> <url-pattern>/AdUserLogin</url-pattern> 
+		</servlet-mapping> <servlet-mapping> <servlet-name>SpringDispatcher</servlet-name> 
+		<url-pattern>/ADUserRegister</url-pattern> </servlet-mapping> -->
 	<session-config>
 		<session-timeout>30</session-timeout>
 	</session-config>
-	
-	<!--    <servlet>
-    <servlet-name>WalletServlet</servlet-name>
-    <servlet-class>com.witl.kalimba.payment.Main_Servlet</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-    <servlet-name>WalletServlet</servlet-name>
-    <url-pattern>/WalletServlet</url-pattern>
-  </servlet-mapping>
-  
-    <servlet-mapping>
-    <servlet-name>WalletServlet</servlet-name>
-    <url-pattern>/postback</url-pattern>
-  </servlet-mapping>-->
+
+	<!-- <servlet> <servlet-name>WalletServlet</servlet-name> <servlet-class>com.witl.kalimba.payment.Main_Servlet</servlet-class> 
+		</servlet> <servlet-mapping> <servlet-name>WalletServlet</servlet-name> <url-pattern>/WalletServlet</url-pattern> 
+		</servlet-mapping> <servlet-mapping> <servlet-name>WalletServlet</servlet-name> 
+		<url-pattern>/postback</url-pattern> </servlet-mapping> -->
+	<!-- <filter> <filter-name>CorsFilter</filter-name> <filter-class>org.apache.catalina.filters.CorsFilter</filter-class> 
+		<init-param> <param-name>cors.allowed.methods</param-name> <param-value>GET,POST,HEAD,OPTIONS,PUT</param-value> 
+		</init-param> </filter> <filter-mapping> <filter-name>CorsFilter</filter-name> 
+		<url-pattern>/*</url-pattern> </filter-mapping> -->
+
+	<!-- <servlet>
+		<servlet-name>ServletAdaptor</servlet-name>
+		<servlet-class>
+			com.sun.jersey.server.impl.container.servlet.ServletAdaptor</servlet-class>
+		<init-param>
+			<param-name>com.sun.jersey.config.property.packages</param-name>
+			<param-value>com.witl.kalimba.webplayer.webservice</param-value>
+		</init-param>	
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ServletAdaptor</servlet-name>
+		<url-pattern>/REST/*</url-pattern>
+	</servlet-mapping> -->
+
 	<welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
 </web-app>

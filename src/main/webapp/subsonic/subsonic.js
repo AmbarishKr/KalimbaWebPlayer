@@ -17,7 +17,7 @@ angular.module('jamstash.subsonic.controller', ['jamstash.subsonic.service', 'ja
     $scope.AutoAlbums = [
         { id: "random", name: "Random" },
         { id: "newest", name: "Latest" },
-        { id: "starred", name: "Starred" },
+        /*{ id: "starred", name: "Starred" },*/
         /*{ id: "highest", name: "Top Rated" },*/
         { id: "frequent", name: "Most Played" },
         { id: "recent", name: "Recently Played" }

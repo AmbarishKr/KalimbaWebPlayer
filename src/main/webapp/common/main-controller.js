@@ -1,6 +1,6 @@
 angular.module('JamStash')
-.controller('AppController', ['$scope', '$rootScope', '$document', '$window', '$location', '$cookieStore', '$http', 'utils', 'globals', 'model', 'notifications', 'player', 'persistence', 'Page',
-    function($scope, $rootScope, $document, $window, $location, $cookieStore, $http, utils, globals, model, notifications, player, persistence, Page) {
+.controller('AppController', ['$scope', '$rootScope', '$document', '$window', '$location', '$cookieStore', '$http', 'utils', 'globals', 'model', 'notifications', 'player', 'persistence', 'Page','$timeout',
+    function($scope, $rootScope, $document, $window, $location, $cookieStore, $http, utils, globals, model, notifications, player, persistence, Page, $timeout) {
     'use strict';
 
     $rootScope.settings = globals.settings;
@@ -311,7 +311,7 @@ angular.module('JamStash')
     $rootScope.getSplitPosition = function (scope, elm) {
         window.alert(elm.getBoundingClientRect().left);
     };
-    $scope.download = function (id) {
+    $scope.download = function (id, counter) {
         $.ajax({
             url: globals.BaseURL() + '/getUser.view?' + globals.BaseParams() + '&username=' + globals.settings.Username,
             method: 'GET',
@@ -322,7 +322,10 @@ angular.module('JamStash')
                    // notifications.updateMessage('Error: ' + data["subsonic-response"].error.message, true);
                 } else {
                     if (data["subsonic-response"].user.downloadRole === true) {
-                        $window.location.href = globals.BaseURL() + '/download.view?' + globals.BaseParams() + '&id=' + id;
+                    	
+                        $timeout(function(){
+                        	$window.location.href = globals.BaseURL() + '/download.view?' + globals.BaseParams() + '&id=' + id;},counter*2000);
+                        
                     } else {
                         notifications.updateMessage('You do not have permission to Download', true);
                     }
@@ -446,22 +449,28 @@ angular.module('JamStash')
     //save users
     
     $scope.saveUser=function (response) {
-    	globals.user.name = response.name;
+    	$rootScope.user.name = response.name;
+    	$rootScope.user.id = response.id;
 		//alert(globals.user.name);
-		globals.user.email = response.email;
-		globals.user.firstName = response.first_name;
-		globals.user.lastName = response.last_name;
-		globals.user.gender = response.gender;
-		globals.user.birthday =response.birthday;
-		globals.user.location = response.location ? response.location.name
+    	if((typeof response.email ==='undefined' || response.email ===null)&&typeof response.email !=='undefined'){
+    		
+    		$rootScope.user.email = response.id+"@facebook.com";
+        }else{
+        	$rootScope.user.email = response.email;
+        }
+    	$rootScope.user.firstName = response.first_name;
+    	$rootScope.user.lastName = response.last_name;
+    	$rootScope.user.gender = response.gender;
+    	$rootScope.user.birthday =response.birthday;
+    	$rootScope.user.location = response.location ? response.location.name
 				: '';
-		globals.user.hometown = response.hometown ? response.hometown.name
+    	$rootScope.user.hometown = response.hometown ? response.hometown.name
 				: '';
 		//document.forms[0].bio.value = response.bio;
-		globals.user.relationship = response.relationship_status;
-		globals.user.timezone = response.timezone;
-		globals.user.userType = 'A';
-		globals.user.providerId = "1";
+    	$rootScope.user.relationship = response.relationship_status;
+    	$rootScope.user.timezone = response.timezone;
+    	$rootScope.user.userType = 'A';
+    	$rootScope.user.providerId = "1";
     };
     
     /* Launch on Startup */

@@ -1,4 +1,4 @@
-package com.witl.kalimba.webplayer;
+package com.witl.kalimba.webplayer.common;
 
 /*@auther : Ambarish Kumar
  * 
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import com.witl.kalimba.webplayer.User;
+import com.witl.kalimba.webplayer.common.User;
 
 public class UserMapper implements RowMapper<User> {
    public User mapRow(ResultSet rs, int rowNum) throws SQLException {

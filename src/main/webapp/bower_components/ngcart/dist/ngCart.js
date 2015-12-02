@@ -1,18 +1,32 @@
 'use strict';
 
-
 angular.module('ngCart', ['ngCart.directives'])
-
-    .config([function () {
+//angular.module('ngCart', ['ngCart.directives','ui.router'])
+ .config([function () {
 
     }])
+
+    /*.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+    	  //
+    	  // For any unmatched url, redirect to /state1
+    	  $urlRouterProvider.otherwise("/state1");
+    	  //
+    	  // Now set up the states
+    	  $stateProvider
+    	    .state('transaction', {
+    	      url: "/transaction",
+    	      templateUrl: "template/ngCart/transaction.html",
+    	      
+    	    })
+    	    
+    	}])*/
 
     .provider('$ngCart', function () {
         this.$get = function () {
         };
     })
 
-    .run(['$rootScope', 'ngCart','ngCartItem', 'store', function ($rootScope, ngCart, ngCartItem, store) {
+    .run(['$rootScope', 'ngCart','ngCartItem', 'store','$location','globals', function ($rootScope, ngCart, ngCartItem, store,$location,globals) {
 
         $rootScope.$on('ngCart:change', function(){
             ngCart.$save();
@@ -27,6 +41,9 @@ angular.module('ngCart', ['ngCart.directives'])
 
     }])
 
+    
+    
+    
     .service('ngCart', ['$rootScope', 'ngCartItem', 'store', function ($rootScope, ngCartItem, store) {
 
         this.init = function(){
@@ -112,6 +129,18 @@ angular.module('ngCart', ['ngCart.directives'])
             });
             return count;
         };
+        
+        //////////////////////////////
+        this.getItemId = function () {
+            var count ;
+            var items = this.getItems();
+            angular.forEach(items, function (item) {
+               count=  item.getId();
+            });
+            return items;
+        };
+        
+       
 
         this.getTotalUniqueItems = function () {
             return this.getCart().items.length;
@@ -199,7 +228,7 @@ angular.module('ngCart', ['ngCart.directives'])
 
     }])
 
-    .factory('ngCartItem', ['$rootScope', '$log', function ($rootScope, $log) {
+    .factory('ngCartItem', ['$rootScope', '$log', '$location' ,function ($rootScope, $log,$location) {
 
         var item = function (id, name, price, quantity, data,img) {
             this.setId(id);
@@ -249,7 +278,7 @@ angular.module('ngCart', ['ngCart.directives'])
         item.prototype.setPrice = function(price){
             var priceFloat = parseFloat(price);
             if (priceFloat) {
-                if (priceFloat <= 0) {
+                if (priceFloat < 0) {
                     $log.error('A price must be over 0');
                 } else {
                     this._price = (priceFloat);
@@ -343,52 +372,76 @@ angular.module('ngCart', ['ngCart.directives'])
         }
     }])
 
-    .controller('CartController',['$scope', 'ngCart', function($scope, ngCart) {
+    .controller('CartController',['$scope', 'ngCart','$http','$rootScope','ngCartItem','$location','globals', function($scope, ngCart, $http,$rootScope,bsLoadingOverlayService,$location,ngCartItem,item,$stateProvider,globals) {
         $scope.ngCart = ngCart;
-        
+        $scope.token="ttttt";
         
         var manageCartUI = function(){
+        	
           	if($scope.ngCart.getItems()<=0){
            		document.getElementById("testid").style.color="#888";
           		document.getElementById("dialogtest").style.width="0px";
            		document.getElementById("dialogtest").style.height="0px";
-           		document.getElementById("dialogtest").style.border="#fff";
-           		
-           
-           		//document.getElementsByClassName("tiptext").unbind('mouseover mouseout'); 
-           		
-           	}else{
-           		//document.getElementById("testid").style.color="green"; 
+           		document.getElementById("dialogtest").style.border="#fff";       		
+           	}else{           	
            		document.getElementById("dialogtest").style.width="50px";
            		document.getElementById("dialogtest").style.height="auto";
-           		document.getElementById("dialogtest").style.border="1px solid #39B54A";
-           		/*document.getElementByClassName("tiptext").addEventListener("mousemove",function() {
-           	    	 autoOpen: false;
-           	        $(this).children(".description").show();
-           	    }).mouseout(function() {
-           	        $(this).children(".description").hide();
-           	    });*/
+           		document.getElementById("dialogtest").style.border="1px solid #39B54A";           		
            	    		
-               	}
+               	}          	
         };
         
+     $scope.sendToken = function(){
+    	 /*alert( $rootScope.user.name);*/
+    	 /*alert( $rootScope.user.email);*/
+    	 if($rootScope.user.email==undefined||$rootScope.user.email==''||$rootScope.user.email==null)
+    		 {
+    		 alert("Please Login to continue");
+    		 $('#spinner').hide();
+    		 return false;
+    		 
+    		 }
+    	 
+    	 var email=$rootScope.user.email;
+    	var total = $scope.ngCart.totalCost();
+    //	var each= $scope.ngCart.getTotalItems();
+    	var items=  $scope.ngCart.getItemId();
+    	var details='';
+    	angular.forEach(items, function (item) {
+    		details=details+item.getId()+',';
+         });
+    	
+    	
+    	var data = 'totalPrice='+total ;
+    	 $http({
+    		  method: 'GET',
+    		  url: 'getToken?'+data,
+    		  params: {'itemsdetails':details, 'email':email}
+    		}).then(function successCallback(response) {
+    			console.log(response);
+    			var token = response.data;
+    		
+    			window.location.href="https://secure.3gdirectpay.com/pay.asp?ID="+token;
+    		    
+    		  }, function errorCallback(erresponse) {
+    			  console.log(erresponse);
+    		    // called asynchronously if an error occurs
+    		    // or server returns response with an error status.
+    		  });
+     };
        
         
       $scope.$on("ngCart:change", function(){
         	manageCartUI();
         });
         
-       // document.getElementById("myDIV").addEventListener("mousemove", myFunction);
-
-     // Remove the event handler from <div>
-     //document.getElementById("myDIV").removeEventListener("mousemove", myFunction);
-        
+    
         
         
         manageCartUI();
         
         
-
+       
     }])
 
     .value('version', '1.0.0');

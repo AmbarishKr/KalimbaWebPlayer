@@ -1,4 +1,4 @@
-package com.witl.kalimba.webplayer;
+package com.witl.kalimba.webplayer.controller;
 
 /*@auther : Ambarish Kumar
  * 
@@ -11,6 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.witl.kalimba.webplayer.common.User;
+import com.witl.kalimba.webplayer.common.UserJDBCTemplate;
 
 @Controller
 public class HomeController {

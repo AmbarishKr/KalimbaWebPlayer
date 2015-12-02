@@ -5,9 +5,9 @@
 */
 angular.module('jamstash.settings.service', [])
 
-.service('globals', function () {
+.service('globals',['$rootScope', function ($rootScope) {
     'use strict';
-
+   // $rootScope.email='asdasd@asdfas.com';
     this.SearchTypes = [
         { id: 0, name: "Song" },
         { id: 1, name: "Album" },
@@ -24,28 +24,35 @@ angular.module('jamstash.settings.service', [])
         { id: "track", name: "Track" },
         { id: "createdate desc", name: "Date Added" }
     ];
+   
     this.settings = {
+    		
         // Subsonic
         /* Demo Server
         Username: "android-guest"),
         Password: "guest"),
         Server: "http://subsonic.org/demo"),
         */
-        Url: "http://jamstash.com/#/archive/",
+       /* Url: "http://jamstash.com/#/archive/",
         Username: "jamuser",
         Password: "support1!",
-        Server: "http://www.kalimbaradio.com:4040",
+        Server: "http://www.kalimbaradio.com:4040",*/
+    		
+    		 Url : "http://jamstash.com/#/archive/",
+    		 Username: "jamuser",
+    	        Password: "support1!",
+    	        Server: "http://www.kalimbaradio.com:4040",
         Timeout: 20000,
         Protocol: "jsonp",
         ApplicationName: "Jamstash",
         ApiVersion: "1.6.0",
         AutoPlaylists: "",
         AutoPlaylistSize: 25,
-        AutoAlbumSize: 15,
+        AutoAlbumSize: 40,
         // General
         HideAZ: false,
         ScrollTitle: true,
-        NotificationSong: true,
+        NotificationSong: false,
         NotificationNowPlaying: false,
         SaveTrackPosition: false,
         ForceFlash: false,
@@ -61,8 +68,9 @@ angular.module('jamstash.settings.service', [])
         Debug: false,
         ShowQueue: false
     };
-    this.user= {
+    $rootScope.user= {
         	email:null,
+        	id:null,
         	name:null,
         	firstName:null,
         	lastName:null,
@@ -78,14 +86,14 @@ angular.module('jamstash.settings.service', [])
     this.SavedCollections = [];
     this.SavedGenres = [];
     this.Player1 = '#playdeck_1';
-    this.archiveUrl = 'https://archive.org/';
+    this.archiveUrl = 'http://archive.org/';
     this.ChangeLog = null;
     this.Messages = [];
 
     this.BaseURL = function () { return this.settings.Server + '/rest'; };
     this.BaseParams = function () { return 'u=' + this.settings.Username + '&p=' + this.settings.Password + '&f=' + this.settings.Protocol + '&v=' + this.settings.ApiVersion + '&c=' + this.settings.ApplicationName; };
     this.BaseJSONParams = function () { return 'u=' + this.settings.Username + '&p=' + this.settings.Password + '&f=json&v=' + this.settings.ApiVersion + '&c=' + this.settings.ApplicationName; };
-})
+}])
 
 .factory('json', ['$http', function ($http) { // Deferred loading
     'use strict';

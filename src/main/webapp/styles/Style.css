@@ -189,7 +189,7 @@ span.apiversion
     height: 20px;
     opacity: .8;
 }
-#ssname
+/* #ssname
 {
     position: absolute;
     top: 25px;
@@ -201,19 +201,51 @@ span.apiversion
     font-variant: small-caps;
     color: #6B6B6B;
     font-size: 15px;
-    /* background: url('../images/facebook_icon.png') no-repeat 5px 3px;   */ 
+    background: url('../images/facebook_icon.png') no-repeat 5px 3px;   
     cursor: pointer;
+} */
+
+#ssname {
+    position: fixed;
+    /* top: 75px; */
+    /* right: 35px; */
+    /* width: 55px; */
+    /* height: 30px; */
+    border-radius: 32px;
+    font-weight: bold;
+    font-variant: small-caps;
+    color: #6B6B6B;
+    font-size: 15px;
+    /* background: url('../images/facebook_icon.png') no-repeat 5px 3px; */
+    cursor: pointer;
+    text-align: center;
 }
-#sslogo
+
+/* #sslogo
 {
     position: absolute;
     top: 10px;
-    right: 170px;
+    right: 20px;
     width: 45px;
     height: 45px;
     border-radius: 32px;
-    /* background: url('../images/facebook_icon.png') no-repeat 5px 3px;   */ 
+    background: url('../images/facebook_icon.png') no-repeat 5px 3px;   
     cursor: pointer;
+} */
+
+#sslogo {
+    /* position: absolute; */
+    /* top: 10px; */
+    /* right: 20px; */
+    width: 35px;
+    /* height: 45px; */
+    border-radius: 32px;
+    /* background: url('../images/facebook_icon.png') no-repeat 5px 3px; */
+    cursor: pointer;
+}
+<style>…</style>.fb_iframe_widget {
+    display: inline-block;
+    position: relative;
 }
 #sslogo:hover
 {
@@ -237,7 +269,7 @@ span.apiversion
 }
 .smcolumn 
 {
-    height: calc(100% - 275px);;
+    height: calc(100% - 330px);;
     overflow-y: auto;
     outline: none;
 	 width: 312px;
@@ -249,7 +281,7 @@ span.apiversion
 	/*border-right: 1px solid #ddd;
     border-top: 1px solid #cbcbcb;*/
 	position: absolute;
-	top: 80px;
+	top: 115px;
 	left: 0;
 	margin-bottom: -72px;
     background: #fff;
@@ -261,7 +293,7 @@ span.apiversion
 }
 .smcolumn-bottom
 {
-    height: 190px;
+    height: 180px;
     overflow-y: auto;
     outline: none;
 	/* width: 312px; */
@@ -273,7 +305,7 @@ span.apiversion
 	/*border-right: 1px solid #ddd;
     border-top: 1px solid #cbcbcb;*/
 	position:absolute;
-	bottom: 80px;
+	bottom: 90px;
 	left: 0;
 	margin-bottom: -72px;
     background: #fff;
@@ -295,6 +327,12 @@ span.apiversion
 .lgcolumn_expanded
 {
     margin-right: 0 !important;
+    margin-left: 312px;
+    height: 100%;
+    overflow-y: auto;
+    outline: none;
+    min-width: 400px;
+    
 }
 .lgcolumn_expandedleft
 {
@@ -315,7 +353,7 @@ span.apiversion
     width:  100%; 
     overflow: hidden;
     position: fixed;
-    top: 75px;
+    top: 111px;
 	/*
     bottom: 84px;
 	*/
@@ -332,9 +370,9 @@ span.apiversion
     border: 1px solid #39b54a;
     /* border-left: 1px solid #ddd; */
     position: fixed;
-    top: 80px;
+    top: 132px;
     left: 25%;
-	margin-bottom: -42px;
+	bottom: 100px;
     opacity: .98;
 }
 #SideBar .header
@@ -358,6 +396,46 @@ span.apiversion
     position: absolute;
     bottom: 0;
 }
+
+#SideBar-Ads
+{
+    display: block;
+	min-height: 100%;
+	height: 100%;
+	overflow-y: auto;
+    width: 312px;
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px ;/*solid #39b54a;*/
+    /* border-left: 1px solid #ddd; */
+    position: fixed;
+    top: 80px;
+    right: 0%;
+	margin-bottom: -42px;
+    opacity: .98;
+}
+#SideBar-Ads .header
+{
+    padding: 10px 4px 6px 4px;
+    font-size: 12px;
+    color: #bbb;
+    font-variant: small-caps;
+    font-weight: bold;
+	text-align: center;
+}
+#SideBar-Ads .headeractions
+{
+	position: absolute;
+	right: 10px;
+	padding: 2px 2px 0 0;
+}
+#SideBar-Ads .submit
+{
+    padding: 0 2px;
+    position: absolute;
+    bottom: 0;
+}
+
+
 .fullsection
 {
     min-width: 300px;
@@ -535,7 +613,7 @@ ul.simplelist .item .itemactions a
     float: left;
     margin: 0 5px;
     float: left;
-    width: 8%;
+    width: 45px;
     height: 20px;
     display: block;
     margin: 0;
@@ -1086,7 +1164,7 @@ ul.songlist li:hover
 }
 #AZIndex a
 {
-    color: #7EA8D5;
+    color: #39b54a;
     font-size: 24px;
     text-decoration: none;
     padding: 5px 5px 0 5px;
@@ -1117,7 +1195,7 @@ ul.songlist li:hover
 }
 #submenu_AZIndex li a
 {
-    color: #4B95E5;
+    color: #39b54a;
     text-decoration: none;
     font-size: 24px;
     padding: 0 5px 0 0;
@@ -1918,8 +1996,8 @@ legend
 }
 
 .dwn-button-div {
-    width: 300px;
-    height:55px;
+    width: 280px;
+    height:50px;
     margin: auto;
     margin-top:5px;
     margin-bottom:0px;
@@ -1935,9 +2013,10 @@ legend
 }
 
 .dwn-button {
-    width: 150px;
-    height: 55px;
-    margin: auto;
+    width: 113px;
+    height: 38px;
+    margin-right: 10px;
+    margin-left: 10px;
     float: left;
 }
 .social-button {
@@ -1957,4 +2036,45 @@ legend
 .float_center > .child {
   position: relative;
   left: 50%;
+}
+
+.Main-Menu {
+    color: #6B6B6B;
+    font-variant: small-caps;
+    font-size: 20px;
+    text-decoration: none;
+    position: absolute;
+    top: 15px;
+    left: 312px;
+    font-weight: bold;
+}
+.center {
+    text-align: center;
+}
+.tr-event-img {
+    width: 100%;
+    max-width: 310px;
+    max-height: 200px;
+    margin-bottom: 5px;
+}
+
+.tr-event-img-1 {
+    width: 100%;
+    top:500px;
+    width: 300px;
+    height: 250px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.ticketriver {
+    color: #526571;
+    font-family: arial, verdana, helvetica, clean, sans-serif;
+    font-size: 13px;
+    font-size-adjust: none;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1.231;
+    margin-bottom: 20px;
 }

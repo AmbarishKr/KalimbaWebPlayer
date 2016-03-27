@@ -58,6 +58,7 @@ angular.module('ngCart', ['ngCart.directives'])
         this.addItem = function (id, name, price, quantity, data,img) {
         	
         	
+        	var realPrice= price/100;
 
             var inCart = this.getItemById(id);
 
@@ -65,7 +66,7 @@ angular.module('ngCart', ['ngCart.directives'])
                 //Update quantity of an item if it's already in the cart
                 inCart.setQuantity(quantity, false);
             } else {
-                var newItem = new ngCartItem(id, name, price, quantity, data, img);
+                var newItem = new ngCartItem(id, name, realPrice, quantity, data, img);
                 this.$cart.items.push(newItem);
                 $rootScope.$broadcast('ngCart:itemAdded', newItem);
             }
@@ -277,7 +278,7 @@ angular.module('ngCart', ['ngCart.directives'])
 
         item.prototype.setPrice = function(price){
             var priceFloat = parseFloat(price);
-            if (priceFloat) {
+           /* if (priceFloat) {
                 if (priceFloat < 0) {
                     $log.error('A price must be over 0');
                 } else {
@@ -285,7 +286,8 @@ angular.module('ngCart', ['ngCart.directives'])
                 }
             } else {
                 $log.error('A price must be provided');
-            }
+            }*/
+            this._price = (priceFloat);
         };
         item.prototype.getPrice = function(){
             return this._price;
@@ -411,6 +413,14 @@ angular.module('ngCart', ['ngCart.directives'])
     		details=details+item.getId()+',';
          });
     	
+    	if(parseInt(total)!=0){
+    		//To be commented to activate the payment
+    		
+    		alert("Purchase Disabled. Please contact us at info@kalimbaradio.com");
+    		$('#spinner').hide();
+    		return false; 
+    		
+    		//To be commented to activate the payment
     	
     	var data = 'totalPrice='+total ;
     	 $http({
@@ -428,6 +438,11 @@ angular.module('ngCart', ['ngCart.directives'])
     		    // called asynchronously if an error occurs
     		    // or server returns response with an error status.
     		  });
+    	} else {
+    		alert("This Music was sponsered by Kalimba Radio");
+    		location.reload();
+    	}
+    	
      };
        
         

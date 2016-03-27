@@ -236,14 +236,14 @@ span.apiversion
 #sslogo {
     /* position: absolute; */
     /* top: 10px; */
-    /* right: 20px; */
+    /*  right: 80px; */
     width: 35px;
     /* height: 45px; */
     border-radius: 32px;
     /* background: url('../images/facebook_icon.png') no-repeat 5px 3px; */
     cursor: pointer;
 }
-<style>…</style>.fb_iframe_widget {
+<style>ï¿½</style>.fb_iframe_widget {
     display: inline-block;
     position: relative;
 }
@@ -1952,7 +1952,7 @@ label
 }
 .cartstyle
 {
-	 position: absolute;
+	/*  position: absolute; */
     /* top: 50%; */
    /*  left: 50%; */
     /* width: 30em; */

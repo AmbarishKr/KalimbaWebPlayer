@@ -167,7 +167,7 @@ function show(id, value) {
     <input type="submit" value="submit"> 
     </form>-->
    
-  <a id="sendToken" class="button" style = "right:30px"   ng-click="sendToken()"  >Proceed to Payment</a> 
+  <a id="sendToken" class="button" style = "right:30px"   ng-click="sendToken()"  >{{ ngCart.totalCost()==0?"Download Music":"Proceed to Payment"}}</a> 
 </div>
 
 

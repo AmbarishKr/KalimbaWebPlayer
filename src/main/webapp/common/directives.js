@@ -28,7 +28,7 @@ angular.module('JamStash').directive('sortable', function () {
 .directive('songpreview', ['$compile', 'subsonic', function ($compile, subsonic) {
     return {
         restrict: 'E',
-        templateUrl: 'common/songs.html',
+        templateUrl: 'common/songs.html?version=4',
         replace: false,
         // pass these two names from attrs into the template scope
         scope: {

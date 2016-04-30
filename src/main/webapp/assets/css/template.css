@@ -8817,7 +8817,7 @@ img {
 
 @media ( max-width :991px) {
 	.site-navbar .navbar-brand {
-		padding: 3px 50px
+		padding: 3px 0px
 	}
 	.site-navbar .navbar-brand i {
 		font-size: 24px;

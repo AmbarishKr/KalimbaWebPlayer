@@ -72,6 +72,8 @@ angular.module('ngCart', ['ngCart.directives'])
             }
 
             $rootScope.$broadcast('ngCart:change', {});
+            
+            $(this).children(".description").show();
         };
 
         this.getItemById = function (itemId) {

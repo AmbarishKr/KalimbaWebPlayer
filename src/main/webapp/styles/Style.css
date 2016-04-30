@@ -207,9 +207,9 @@ span.apiversion
 
 #ssname {
     position: fixed;
-    /* top: 75px; */
-    /* right: 35px; */
-    /* width: 55px; */
+     top: 75px; 
+    right: 50px; 
+    /* width: 55px; 
     /* height: 30px; */
     border-radius: 32px;
     font-weight: bold;
@@ -234,11 +234,12 @@ span.apiversion
 } */
 
 #sslogo {
-    /* position: absolute; */
-    /* top: 10px; */
-    /*  right: 80px; */
+    
+    position: absolute;
+    top: 70px;
+    right: 35px;
     width: 35px;
-    /* height: 45px; */
+    height: 45px;
     border-radius: 32px;
     /* background: url('../images/facebook_icon.png') no-repeat 5px 3px; */
     cursor: pointer;
@@ -1008,8 +1009,8 @@ ul.songlist .row img
     float: left;
     margin: 0 5px;
     padding: 2px;
-    height: 15px;
-    width: 10px;
+    height: 30px;
+    width: 20px;
     margin-top: 8px;
 }
 ul.songlist .row .itemactions
@@ -1024,7 +1025,7 @@ ul.songlist .row .itemactions a
     width: 20px;
     height: 20px;
     display: block;
-    margin: 0;
+    margin-left: 10px;
 }
 ul.songlist .row .track
 {
@@ -1063,11 +1064,11 @@ ul.songlist .row .time
 }
 ul.songlist .row a.play
 {
-    background: url('../images/play_gl_6x8.png') no-repeat 7px center;
+    background: url('../images/play_12x16.png') no-repeat 7px center;
 }
 ul.songlist .row a.play:hover
 {
-    background: url('../images/play_6x8.png') no-repeat 7px center #DEECFB;
+    background: url('../images/play_12x16.png') no-repeat 7px center #DEECFB;
 }
 ul.songlist .row a.download
 {
@@ -1239,6 +1240,14 @@ ul.songlist li:hover
     position: absolute;
     top: 0px;
     right: 15px;
+    height: 29px;
+    margin: 6px 0 0 0;
+}
+
+#globalactions-left {
+    position: absolute;
+    top: 8px;
+    left: 10px;
     height: 29px;
     margin: 6px 0 0 0;
 }

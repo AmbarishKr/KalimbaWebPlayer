@@ -191,12 +191,14 @@ angular.module('jamstash.subsonic.service', ['angular-underscore/utils',
                                 content.song.push(map.mapSong(item));
                             }
                         });
+                        $rootScope.hideArtists();
                         return content;
                     }
                 }
                 // We end up here for every else
                 return $q.reject(exception);
             });
+            $rootScope.hideArtists();
             return promise;
         },
         getAlbumListBy: function (id, off) {
@@ -238,6 +240,7 @@ angular.module('jamstash.subsonic.service', ['angular-underscore/utils',
                 // We end up here for every else
                 return $q.reject(exception);
             });
+            $rootScope.hideArtists();
             return promise;
         },
         getAlbumByTag: function (id) { // Gets Album by ID3 tag: NOT Being Used Currently 1/24/2015
@@ -265,6 +268,7 @@ angular.module('jamstash.subsonic.service', ['angular-underscore/utils',
                     deferred.resolve(content);
                 }
             });
+            $rootScope.hideArtists();
             return deferred.promise;
         },
         getSongs: function (id, action) {
@@ -318,6 +322,7 @@ angular.module('jamstash.subsonic.service', ['angular-underscore/utils',
                 // We end up here for every else
                 return $q.reject(exception);
             });
+            $rootScope.hideArtists();
             return promise;
         },
 
@@ -350,6 +355,7 @@ angular.module('jamstash.subsonic.service', ['angular-underscore/utils',
                     // We end up here for every else
                     return $q.reject({reason: 'No results.'});
                 });
+                $rootScope.hideArtists();
                 return promise;
             } else {
                 return $q.reject({reason: 'Wrong search type.'});
@@ -373,12 +379,14 @@ angular.module('jamstash.subsonic.service', ['angular-underscore/utils',
                 if(subsonicResponse.randomSongs !== undefined) {
                     var songArray = [].concat(subsonicResponse.randomSongs.song);
                     if (songArray.length > 0) {
+                    	//$rootScope.hideArtists();
                         return map.mapSongs(songArray);
                     }
                 }
                 // We end up here for every else
                 return $q.reject(exception);
             });
+            $rootScope.hideArtists();
             return promise;
         },
 
@@ -408,6 +416,7 @@ angular.module('jamstash.subsonic.service', ['angular-underscore/utils',
                     // We end up here for every else
                     return $q.reject({reason: 'No starred songs found on the Subsonic server.'});
                 });
+            $rootScope.hideArtists();
             return promise;
         },
 
@@ -427,6 +436,7 @@ angular.module('jamstash.subsonic.service', ['angular-underscore/utils',
                 // We end up here for every else
                 return $q.reject(exception);
             });
+            $rootScope.hideArtists();
             return promise;
         },
 
@@ -440,12 +450,14 @@ angular.module('jamstash.subsonic.service', ['angular-underscore/utils',
                 if (subsonicResponse.playlist.entry !== undefined) {
                     var entryArray = [].concat(subsonicResponse.playlist.entry);
                     if (entryArray.length > 0) {
+                    	
                         return map.mapSongs(entryArray);
                     }
                 }
                 // We end up here for every else
                 return $q.reject(exception);
             });
+            $rootScope.hideArtists();
             return promise;
         },
 

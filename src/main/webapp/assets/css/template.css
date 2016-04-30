@@ -5911,7 +5911,7 @@ textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon
 
 .navbar {
 	position: relative;
-	min-height: 50px;
+	/*min-height: 119px;*/
 	margin-bottom: 20px;
 	border: 1px solid transparent
 }
@@ -6018,7 +6018,7 @@ textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon
 	padding: 8px;
 	font-size: 18px;
 	line-height: 20px;
-	height: 50px
+	/*height: 50px;*/
 }
 
 .navbar-brand:hover,.navbar-brand:focus {
@@ -8817,7 +8817,7 @@ img {
 
 @media ( max-width :991px) {
 	.site-navbar .navbar-brand {
-		padding: 8px 15px
+		padding: 3px 50px
 	}
 	.site-navbar .navbar-brand i {
 		font-size: 24px;

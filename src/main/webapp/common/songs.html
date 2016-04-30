@@ -2,7 +2,7 @@
     <div class="itemactions">
         <a class="add" href="" title="Add To Queue" ng-click="addSongToQueue(o)" stop-event="click"></a>
         <!--<a class="remove" href="" title="Remove Song" ng-click="removeSongFromQueue(o)" stop-event="click"></a>-->
-        <!--<a class="play" href="" title="Start Playing From This Song" ng-click="playFrom($index)" stop-event="click"></a>-->
+        <a class="play" href="" title="Start Playing From This Song" ng-click="playFrom($index)" stop-event="click"></a>
 
        <!--  <a class="download" href="" title="Download Song" ng-click="download(o.id)"></a>-->
         <!-- <a href="" title="Favorite" ng-class="{'favorite': o.starred, 'rate': !o.starred}" ng-click="updateFavorite(o)" stop-event="click"></a>-->
@@ -14,20 +14,20 @@
         <!--<a class="download" href="" title="Download Song" ng-click="download(o.id)"></a>-->
        <!--  <a href="" title="Favorite" ng-class="{'favorite': o.starred, 'rate': !o.starred}" ng-click="updateFavorite(o)" stop-event="click"></a>-->
         <ngcart-addtocart id="{{ o.id }}" ng-show="o.track > 0" name="{{ o.name }}" price="{{o.track==9999?parseFloat(0):parseFloat(o.track)}}" quantity="1" quantity-max="1" img="{{o.artist}}">
-        <img src="images/download_gl_9x12.png" style="margin-left: 45px;margin-top: -20px;" /> 
+        <img src="images/download_gl_9x12.png" style="margin-left: 65px;margin-top: -23px;" /> 
         </ngcart-addtocart>
         <div class="clear"></div>
     </div>
     <!-- <div class="track floatleft" > </div> -->
-  <div class="title floatleft" title="{{o.description}}" ng-bind-html="o.name" style="margin-left: 100px;"></div>
+  <div class="title floatleft" title="{{o.description}}" ng-bind-html="o.name" style="margin-left: 80px;"></div>
 
     <span class="artist floatleft" ng-bind-html="o.artist"></span>
-    <div ng-show="o.album && itemType !== 'archive'">
+   <!--   <div ng-show="o.album && itemType !== 'archive'">
         <img src="{{o.coverartfull}}">
         <a ng-href="#/library/0/{{o.albumId}}" class="albumblock floatleft" stop-event="click" ng-bind-html="o.album" title="{{o.album}}"></a>
     </div>
     <a ng-show="o.album && itemType === 'archive'" ng-href="#/archive/{{o.artist}}/{{o.parentid}}" class="albumblock floatleft" stop-event="click" ng-bind-html="o.album" title="{{o.album}}"></a>
     <div class="albumblock floatleft" ng-show="!o.album">&nbsp;</div>
     <div class="time floatleft" style="margin-left: 20px;">{{o.time}}</div>
-    <div class="clear"></div>
+    <div class="clear"></div> -->
 </li>

@@ -11,9 +11,9 @@
 <meta name=viewport content="width=device-width, initial-scale=1">
 <title ng-bind="Page.title()">Kalimba Radio</title>
 <script type="text/javascript">
-if (screen.width <= 699) {
-document.location = "http://m.kalimbaradio.com";
-}
+ if (screen.width > 699) {
+document.location = "http://www.kalimbaradio.com";
+} 
 </script>
 
 <link href="images/favicon_webplayer.ico" rel="shortcut icon" />
@@ -37,7 +37,7 @@ document.location = "http://m.kalimbaradio.com";
 	background: #FFFFFF;
 	border: 1px #333;
 	padding-right: 15px;
-	width: auto;
+	width: 120px;
 	height: auto;
 	color: 5B5B4E;
 	/* right: 450px; */
@@ -49,11 +49,11 @@ document.location = "http://m.kalimbaradio.com";
 	display: none;
 	position: absolute;
 	border: 1px solid green;
-	min-width: 500px;
+	min-width: 100%;
 	height: auto;
 	z-index: 1;
 	background-color: #FFFFFF;
-	margin-left: -200px;
+	margin-left: 0px;
 }
 
 .overlay {
@@ -194,8 +194,8 @@ document.location = "http://m.kalimbaradio.com";
 			})(window, document, 'script',
 					'//www.google-analytics.com/analytics.js', 'ga');
 
-			ga('create', 'UA-58557800-2', 'KalimbaWebPlayer');
-			ga('send', 'pageview');
+			ga('create', 'UA-58557800-2', 'KalimbaModilePlayer');
+			ga('send', 'pageview-Mobile');
 
 			function checkLoginState(userType) {
 				//var var1=$scope.var1;
@@ -471,7 +471,7 @@ document.location = "http://m.kalimbaradio.com";
 				document.forms[0].submit();
 			}
 			
-			function showCart(id, value) {
+			function showCart() {
 				 $(this).children(".description").show();
 			}
 		</script>
@@ -582,6 +582,8 @@ document.location = "http://m.kalimbaradio.com";
 
         <nav id="navbar" class="site-navbar navbar navbar-static-top" role="navigation">
           <div class="">
+          <div id="globalactions-left"> <a href="" ng-click="toggleArtists()" title="Pin Queue"><img style="width: 36px; height: 36px;" src="images/musicicon.png"></a> </div>
+          
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
@@ -589,22 +591,13 @@ document.location = "http://m.kalimbaradio.com";
               </button>
               <h1 class="navbar-brand"><a href="index.html"><img src="images/kalimba_logo-01.png"  alt="Kalimba Radio Free African music streaming"></a></h1>
             </div>
-        <!--     <div align="right" class="tiptext cartstyle"  style="color: 5B5B4E"
-					id="testid">
-					<div class="description boxshadow" id="dialogtest">
-						<div id="loginElement"></div>
-						<ngcart-cart></ngcart-cart>
-				
-					</div>
-					<ngcart-summary></ngcart-summary>
-
-				</div> -->
+          
 				<div id="spinner" class="spinner" style="display:none;">
     <img id="img-spinner" src="images/ajax_loader_gray_128.gif" style="width:128px;height:128px;margin-top:15%;" alt="Loading"/>
 </div>
             <div class="collapse navbar-collapse" id="navbar-collapse-1">
               <ul id="navigation" class="nav navbar-nav navbar-right">
-              <li>
+            <!--    <li>
               <div align="right" class="tiptext cartstyle"  style="color: 5B5B4E"
 					id="testid">
 					<div class="description boxshadow" id="dialogtest">
@@ -615,10 +608,10 @@ document.location = "http://m.kalimbaradio.com";
 					<ngcart-summary></ngcart-summary>
 
 				</div>
-              </li>
-                 <li style="width: 60px;top: 3px;"><fb:login-button id="sslogo" size="medium" scope="email"
+              </li>-->
+                 <!--  <li style="width: 60px;top: 3px;"><fb:login-button id="sslogo" size="medium" scope="email"
 					onlogin="checkLoginState('U');"></fb:login-button>
-					<div id="ssname" href=""></div></li>
+					<div id="ssname" href=""></div></li>-->
                  <li><a target="_blank" href="http://www.kalimbaradio.com/about/">About Us</a></li>
                 <li><a target="_blank" href="http://blog.kalimbaradio.com">Blog</a></li>
                 <li><a target="_blank" href="http://www.kalimbaradio.com/about/#contact">Contact Us &nbsp;&nbsp;</a></li>
@@ -627,7 +620,23 @@ document.location = "http://m.kalimbaradio.com";
               </ul>
             </div>
           </div>
-        </nav>
+          </nav>
+           <div align="right" class="tiptext cartstyle"  style="color: 5B5B4E"
+					id="testid">
+					<div class="description boxshadow" id="dialogtest">
+						<div id="loginElement"></div>
+						<ngcart-cart></ngcart-cart>
+				
+					</div>
+					<ngcart-summary></ngcart-summary>
+
+				</div>
+				
+				<fb:login-button id="sslogo" size="medium" scope="email"
+					onlogin="checkLoginState('U');"></fb:login-button>
+					<div id="ssname" href=""></div>
+				
+        
       </header>
 			
 			<div id="content">

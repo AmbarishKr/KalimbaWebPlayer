@@ -1,40 +1,16 @@
 <!-- Start: Library Tab -->
 <div id="tab1" class="tabcontent">
 	<div id="tabLibrary">
-		<!--  <div class="actions floatleft">
-            <a href="" class="button" id="action_RefreshArtists" title="Refresh List" ng-click="refreshArtists()"><img class="pad" src="images/reload_9x11.png" /></a>
-            <a href="" class="button" id="action_RescanLibrary" title="Rescan Library" ng-click="rescanLibrary()"><img class="pad" src="images/loop_alt1_gd_12x9.png" /></a>
-            <a href="" class="button" id="action_ToggleArtists" ng-click="toggleArtists()" title="Toggle Artists"><img src="images/arrow_right_gl_8x8.png" /></a>
-        </div>-->
-		<!--   <div id="search">
-            <input type="text" id="Search" name="Search" class="medium" title="Wildcards (*) supported" placeholder="Search..." ng-model="searching.query" ng-enter="search(searching.query, searching.typeId)"/>
-            <select id="SearchType" name="SearchType" ng-model="searching.typeId" ng-options="o.id as o.name for o in searching.types"></select>
-            <a href="" class="button" id="action_Search" title="Search" ng-click="search(searching.query, searching.typeId)"><img class="pad" src="images/magnifying_glass_alt_12x12.png" /></a>
-        </div> -->
+		
 		<div class="subactions">
-			<!--  <div class="floatleft" ng-show="selectedPlaylist !== null">
-            <div class="floatleft" ng-show="selectedPlaylist !== null">
-                <label>Playlist Actions</label>
-                <a href="" class="button" id="action_DeletePlaylist" title="Delete Selected Playlist" ng-click="deletePlaylist()">Delete</a>
-                <a href="" class="button" id="action_SavePlaylist" title="Save Playlist" ng-click="savePlaylist()">Save</a>
-                <a href="" class="button" id="action_RemoveSongs" title="Remove selected song(s) from playlist" ng-click="songsRemoveSelected()">Remove Song(s)</a>
-                |&nbsp;
-            </div>-->
-			<!--  <a href="" class="button" id="action_PlayAlbum" title="Play Album" ng-click="playAll()"><img src="images/play_gl_6x8.png"></a>
-            <a href="" class="button" id="action_SelectAll" title="Select All" ng-click="selectAll()">All</a>
-            <a href="" class="button" id="action_SelectNone" title="Select None" ng-click="selectNone()">None</a>
-            <a href="" class="button" id="action_AddToQueue" title="Add To Queue" ng-click="addSongsToQueue()">+ Queue</a>
-           <!--  <a href="" class="button" id="action_AddToPlaylist" title="Add Selected To Playlist" ng-click="loadPlaylistsForMenu()">+ Playlist</a>
-            <div id="submenu_AddToPlaylist" class="submenu shadow" style="display: none;">
-                <a href="" ng-repeat="o in playlistMenu" ng-click="addToPlaylist(o.id)">{{o.name}}</a>
-            </div>
-            <a href="" class="button" id="action_NewPlaylist" title="New Playlist" ng-click="newPlaylist()">+</a>-->
+			
 		</div>
 		<div id="SubsonicAlbums" class="lgsection" split>
 			<!-- Album -->
 			<!-- <div id="right-component" class="lgcolumn" ng-class="{'lgcolumn_expanded' : !$rootScope.settings.ShowQueue}"> -->
-			<div id="right-component" class="lgcolumn">
-		<!--  <div id="right-component" class="lgcolumn_expanded">--> 
+			<!--  <div id="right-component" class="lgcolumn"> -->
+		 <div id="right-component" class="lgcolumn lgcolumn_expanded lgcolumn_expandedleft">
+		  <!--  <div class="crumb"><a ng-click="toggleArtists()" title="Toggle Artists">Artists</a> &gt;</div>-->
 				<!--  <ul class="actionlist">
                     <li>
                        
@@ -98,14 +74,14 @@
 						style="background-color: #ffffff">
 						<div class="itemactions-head"></div>
 						<!-- <div class="track floatleft"></div> -->
-						<div class="title floatleft" style="margin-left: 100px;">
+						<div class="title floatleft" style="margin-left: 120px;">
 							<a stop-event="click"><strong>SONG</strong></a>
 						</div> <span class="artist floatleft"><a stop-event="click"
 							ng-click="sortSubsonicSongs('artist');"><strong>ARTIST</strong></a></span>
-						<div class="albumblock floatleft" style="margin-left: 23px;">
+						<!--  <div class="albumblock floatleft" style="margin-left: 23px;">
 							<a stop-event="click" class="songtitle"
 								ng-click="sortSubsonicSongs('album');"><strong>ALBUM</strong></a>
-						</div> <!-- <div class="albumblock floatleft">&nbsp;</div> -->
+						</div>--> <!-- <div class="albumblock floatleft">&nbsp;</div> -->
 						<div class="clear"></div>
 					</li>
 					<div ng-if="song.length > 0" ng-include src="'common/songs.html?version=1'"
@@ -115,7 +91,7 @@
 				<div class="colspacer"></div>
 			</div>
 		</div>
-		<div id="left-component" class="smcolumn noselect" tabindex="0">
+		<div id="left-component" class="smcolumn noselect"  style="display: none;" tabindex="0">
 			<div id="search">
 				<input type="text" id="Search" name="Search" class="medium"
 					title="Wildcards (*) supported" placeholder="Search..."
@@ -179,53 +155,9 @@
 			<div id="PlaylistContainer" class="leftsubsection"
 				ng-show="showPlaylist">
 				<ul class="simplelist mainlist noselect">
-					<!--   <li class="index" id="auto">Auto Playlists</li>
-                    <li class="item" ng-click="getRandomStarredSongs('display')" ng-class="{'selected': selectedAutoPlaylist == 'starred'}">
-                        <div class="itemactions">
-                            <a class="add" href="" ng-click="getRandomStarredSongs('add')" title="Add To Play Queue" stop-event="click"></a>
-                            <a class="play" href="" ng-click="getRandomStarredSongs('play')" title="Play" stop-event="click"></a>
-                        </div>
-                        <div class="title">Starred</div>
-                    </li>
-                    <li class="item" ng-click="getRandomSongs('display')" ng-class="{'selected': selectedAutoPlaylist == 'random'}">
-                        <div class="itemactions">
-                            <a class="add" href="" title="Add To Play Queue" ng-click="getRandomSongs('add')" stop-event="click"></a>
-                            <a class="play" href="" title="Play" ng-click="getRandomSongs('play')" stop-event="click"></a>
-                        </div>
-                        <div class="title">Random</div>
-                    </li>-->
-					<!--  <li class="index" id="auto">Genre Playlists</li>
-                    <select id="Genres" name="Genres" class="large" ng-model="selectedGenre" ng-options="o for o in Genres">
-                        <option value="">[Select Genre]</option>
-                    </select>
-                    <li class="item" ng-repeat="o in playlistsGenre" ng-click="getRandomSongs('display', o)" ng-class="{'selected': selectedAutoPlaylist == o}">
-                        <div class="itemactions">
-                            <a class="add" href="" title="Add To Play Queue" ng-click="getRandomSongs('add', o)" stop-event="click"></a>
-                            <a class="play" href="" title="Play" ng-click="getRandomSongs('play', o)" stop-event="click"></a>
-                        </div>
-                        <div class="title">{{o}}</div>
-                    </li>-->
 				</ul>
-				<!--  <ul class="simplelist mainlist noselect">
-                    <li class="index" id="folder">Folder Playlists</li>
-                    <li class="item" ng-repeat="o in MusicFolders | musicfolder" ng-click=" getRandomSongs('display', '' , o.id)" ng-class="{'selected': o.id == selectedAutoPlaylist}">
-                        <div class="itemactions">
-                            <a class="add" href="" title="Add To Play Queue" ng-click="getRandomSongs('add', '', o.id)" stop-event="click"></a>
-                            <a class="play" href="" title="Play" ng-click="getRandomSongs('play', '', o.id)" stop-event="click"></a>
-                        </div>
-                        <div class="title">{{o.name}}</div>
-                    </li>
-                </ul>-->
-				<!--  <ul class="simplelist mainlist noselect">
-                    <li class="index" id="auto">My Playlists</li>
-                    <li class="item" ng-repeat="o in playlists" ng-click="getPlaylist('display', o.id)" ng-class="{'selected': o.id == selectedPlaylist}">
-                        <div class="itemactions">
-                            <a class="add" href="" title="Add To Play Queue" ng-click="getPlaylist('add', o.id)" stop-event="click"></a>
-                            <a class="play" href="" title="Play" ng-click="getPlaylist('play', o.id)" stop-event="click"></a>
-                        </div>
-                        <div class="title" title="{{'Songs: ' + o.songCount + ', Public: ' + o.public}}">{{o.name}}</div>
-                    </li>
-                </ul> -->
+				
+				
 
 				<ul id="AutoAlbumContainer" class="simplelist mainlist noselect">
 					<li class="index" id="auto">Auto Albums</li>
@@ -242,16 +174,6 @@
 
 				<ul class="simplelist mainlist noselect">
 					<li class="index" id="auto">Playlists</li>
-					<!-- <li class="item" ng-click="getRandomStarredSongs('display')"
-						ng-class="{'selected': selectedAutoPlaylist == 'starred'}">
-						<div class="itemactions">
-							<a class="add" href="" ng-click="getRandomStarredSongs('add')"
-								title="Add To Play Queue" stop-event="click"></a> <a
-								class="play" href="" ng-click="getRandomStarredSongs('play')"
-								title="Play" stop-event="click"></a>
-						</div>
-						<div class="title">Starred</div>
-					</li> -->
 					<li class="item" ng-click="getRandomSongs('display')"
 						ng-class="{'selected': selectedAutoPlaylist == 'random'}">
 						<div class="itemactions">
@@ -307,7 +229,7 @@ Media Player 300x250
 <img src="images/Ads250X200.png"/></div>
             <div class="colspacer"></div> -->
 		</div>
-		<div id="left-component" class="smcolumn-bottom noselect" tabindex="0">
+<!--  	<div id="left-component" class="smcolumn-bottom noselect" style="display: none;" tabindex="0">
 			<div class="dwn-button-div">
 				<a target="_blank" class="margin:10px"
 					href="https://play.google.com/store/apps/details?id=net.sourceforge.kalimbaradio.androidapp">
@@ -331,17 +253,8 @@ Media Player 300x250
 
 				<div class="clear"></div>
 			</div>
-			<!-- <div class="social-button-div">
-		
-						<a href="https://www.facebook.com/pages/Kalimba-Radio/815656758457582">
-								<img class="social-button" src="images/facebook.png">
-						</a>
-						<a href="https://twitter.com/KalimbaMedia"> <img class="social-button" src="images/google.png">
-						</a>
-
 			
-		</div> -->
-			<!-- <div style="height:1px">&nbsp;</div> -->
+			
 			<div style="text-align:center">
 			<div class="fb-like" 
 				data-href="http://www.facebook.com/kalimbamedia" data-width="250px"
@@ -361,8 +274,17 @@ Media Player 300x250
 					<li><a href="" class="close" ng-click="toggleAZ()">[Close]</a></li>
 				</ul>
 			</div>
-		</div>
-
+		</div> -->
+<div id="submenu_AZIndex" class="submenu shadow"
+				style="display: none;">
+				<ul>
+					<li ng-repeat="o in index"><a href=""
+						ng-click="scrollToIndexName(o.name)">{{o.name}}</a></li>
+					<li><a href="" class="close"
+						ng-click="scrollToIndexName('AZIndex')">[Top]</a></li>
+					<li><a href="" class="close" ng-click="toggleAZ()">[Close]</a></li>
+				</ul>
+			</div>
 
 		<div class="clear"></div>
 	</div>

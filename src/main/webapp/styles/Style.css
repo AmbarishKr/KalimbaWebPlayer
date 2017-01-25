@@ -208,7 +208,7 @@ span.apiversion
 #ssname {
     position: fixed;
      top: 75px; 
-    right: 50px; 
+    right: 75px; 
     /* width: 55px; 
     /* height: 30px; */
     border-radius: 32px;
@@ -347,7 +347,7 @@ span.apiversion
 }
 .lgsection
 {
-    height: 100%;
+    height: calc(100% - 153px);
     background: #fff;
     border-top: 3px solid #39b54a;
     border-bottom: 3px solid #39b54a;
@@ -355,9 +355,9 @@ span.apiversion
     overflow: hidden;
     position: fixed;
     top: 111px;
-	/*
-    bottom: 84px;
-	*/
+	
+    bottom: 180px;
+	
 	margin-bottom: -42px;
 }
 #SideBar 
@@ -409,7 +409,7 @@ span.apiversion
     border: 1px ;/*solid #39b54a;*/
     /* border-left: 1px solid #ddd; */
     position: fixed;
-    top: 80px;
+    top: 114px;
     right: 0%;
 	margin-bottom: -42px;
     opacity: .98;
@@ -1244,12 +1244,20 @@ ul.songlist li:hover
     margin: 6px 0 0 0;
 }
 
-#globalactions-left {
+#globalactions-left  ul li {
     position: absolute;
     top: 62px;
     left: 10px;
     height: 29px;
     margin: 6px 0 0 0;
+    
+  display: inline;
+  list-style: none;
+  float: left;
+  margin-right: 10px;
+  padding: 0;
+  text-align:center; 
+  color: #fff;
 }
 #search
 {
@@ -1399,7 +1407,7 @@ ul.songlist li:hover
     margin: 4px 0 0 0;
     /*height: 75px;*/
     position: absolute;
-    bottom: 0; /* Sit it on the bottom */
+    bottom: 50px; /* Sit it on the bottom */
     left: 0;
     width: 100%; /* As wide as it's allowed */
     z-index: 100;
@@ -1672,10 +1680,6 @@ ul.songlist li:hover
 {
 	display: none;
 	position: absolute;
-	top: 0%;
-	left: 0%;
-	width: 100%;
-	height: 100%;
 	background-color: black;
 	z-index:1001;
 	-moz-opacity: 0.8;
@@ -2086,4 +2090,17 @@ legend
     font-weight: normal;
     line-height: 1.231;
     margin-bottom: 20px;
+}
+
+.bannerAdBottomBelowplayer
+{
+    border-top: 1px solid #cbcbcb;
+    border-bottom: none;
+    margin: 4px 0 0 0;
+    /*height: 75px;*/
+    position: absolute;
+    bottom: 0; /* Sit it on the bottom */
+    left: 0;
+    width: 100%; /* As wide as it's allowed */
+    z-index: 100;
 }

@@ -71,6 +71,10 @@
 		<servlet-name>SpringDispatcher</servlet-name>
 		<url-pattern>/getDownloadValidation</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SpringDispatcher</servlet-name>
+		<url-pattern>/setUserDb</url-pattern>
+	</servlet-mapping>
 	
 	
 	<!-- <servlet-mapping> <servlet-name>SpringDispatcher</servlet-name> <url-pattern>/uploadController</url-pattern> 

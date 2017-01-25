@@ -11,9 +11,9 @@
 <meta name=viewport content="width=device-width, initial-scale=1">
 <title ng-bind="Page.title()">Kalimba Radio</title>
 <script type="text/javascript">
- if (screen.width > 699) {
+/* if (screen.width > 699) {
 document.location = "http://www.kalimbaradio.com";
-} 
+} */
 </script>
 
 <link href="images/favicon_webplayer.ico" rel="shortcut icon" />
@@ -305,16 +305,12 @@ document.location = "http://www.kalimbaradio.com";
 													document
 															.getElementById('ssname').style.display = "block";
 													document
-															.getElementById('ssname').innerHTML = response.first_name;
+															.getElementById('ssname').innerHTML ="Hi "+response.first_name;
 												} 
 												console.log("the end");
 
 												//document.forms[0].action="/U";
-												var scope = angular
-												.element(
-														document
-																.getElementById("loginElement"))
-												.scope();
+												var scope = angular.element(document.getElementById("loginElement")).scope();
 										scope.$apply(function() {
 											scope.saveUser(response);
 											//scope.saveUser(response);
@@ -373,38 +369,15 @@ document.location = "http://www.kalimbaradio.com";
 									console.log('Successful login for: '
 											+ JSON.stringify(response));
 									//alert(JSON.stringify(response));
-									// document.getElementById('status').innerHTML =
-									//   'Thanks for logging in, ' + response.name + '!';
-
-									//alert(document.forms[0].getElementsByName("name").value);
-									//alert(document.forms[0].getElementById("name").value);
-									//alert(document.getElementById("name").value);
+									
 									//alert(response.name);
 									if (typeof response.first_name != 'undefined') {
 										document.getElementById('ssname').style.display = "block";
-										document.getElementById('ssname').innerHTML = response.first_name;
+										document.getElementById('ssname').innerHTML = "Hi "+response.first_name;
 									}
-									document.forms[0].name.value = response.name;
-									//alert(document.forms[0].name.value);
-									document.forms[0].email.value = response.email;
-									document.forms[0].first_name.value = response.first_name;
-									document.forms[0].last_name.value = response.last_name;
-									document.forms[0].gender.value = response.gender;
-									document.forms[0].birthday.value = ''; //response.birthday;
-
-									document.forms[0].location.value = response.location ? response.location.name
-											: '';
-									document.forms[0].hometown.value = response.hometown ? response.hometown.name
-											: '';
-									//document.forms[0].bio.value = response.bio;
-									document.forms[0].relationship.value = response.relationship_status;
-									document.forms[0].timezone.value = response.timezone;
-									document.forms[0].userType.value = userType;
-									document.forms[0].providerId.value = "1";
-									document.forms[0].sessionEmail.value = response.email;
-									//response.id;
+											//response.id;
 									document.getElementById('ssname').style.display = "block";
-									document.getElementById('ssname').innerHTML = response.first_name;
+									document.getElementById('ssname').innerHTML = "Hi "+response.first_name;
 									
 									var scope = angular
 											.element(
@@ -415,31 +388,13 @@ document.location = "http://www.kalimbaradio.com";
 										scope.saveUser(response);
 										//scope.saveUser(response);
 									});
+									
 									//saveUser(response);
-									//alert(document.forms[0].location.value);
-									//alert(document.forms[0].hometown.value);
-									//alert(document.forms[0].relationship.value);
-									//alert(document.forms[0].timezone.value);
-									callServlet();
 
 								});
 			}
 
-			function callServlet() {
-				if (document.forms[0].email.value != '') {
-					// Logged into your app and Facebook.
-					//alert("call servlet");
-					sessionEmail = document.forms[0].sessionEmail.value;
-					//if (sessionEmail == "") {
-					document.forms[0].method = 'post';
-
-					document.forms[0].action = 'saveUser';
-
-					document.forms[0].submit();
-					
-
-				}
-			}
+			
 
 			function callLogout() {
 				//alert("in logout");
@@ -535,6 +490,7 @@ document.location = "http://www.kalimbaradio.com";
     <script type="text/javascript" src="assets/js/main.js"></script>
 		<!-- endbuild -->
 		<div id="container">
+		<div id="loginElement"></div>
 		 <!-- 	<div id="header">
 				<div id="messages">
 					<span ng-attr-id="{{ 'msg_' + $index }}" class="message"
@@ -574,6 +530,7 @@ document.location = "http://www.kalimbaradio.com";
                 <a target="_blank" href="https://twitter.com/KalimbaMedia"><i class="fa fa-twitter"></i></a>
                 <a target="_blank" href="http://goo.gl/UKiiBU"><img src="images/android.png"  alt="Kalimba Radio Free African music streaming"></a> 
                 <a target="_blank" href="http://goo.gl/TxGX2C"><img src="images/blackberryicon.png"  alt="Kalimba Radio Free African music streaming"></a>
+                 <a target="_blank" href="https://appsto.re/in/DdeMdb.i"><img src="images/apple-32.png"  alt="Kalimba Radio Free African music streaming"></a>
                 &nbsp; <!-- <font color="39b54a">0 Items &nbsp;&nbsp;</font> -->
               </div>
             </div>
@@ -607,6 +564,7 @@ document.location = "http://www.kalimbaradio.com";
             </div>
           </div>
           </nav>
+          <!-- Uncomment for Cart -->
          <!--  <div align="right" class="tiptext cartstyle"  style="color: 5B5B4E"
 					id="testid">
 					<div class="description boxshadow" id="dialogtest">
@@ -617,8 +575,13 @@ document.location = "http://www.kalimbaradio.com";
 					<ngcart-summary></ngcart-summary>
 
 				</div>-->
-				<div id="globalactions-left"> <a href="" ng-click="toggleArtists()" title="Pin Queue"><img style="width: 36px; height: 36px;" src="images/musicicon.png"></a> </div>
-          
+				<!-- end of Uncomment for Cart -->
+				<div id="globalactions-left"><ul>
+            <li><span> <a href="" ng-click="toggleArtists()" title="Pin Queue"><img style="width: 36px; height: 36px;" src="images/more.png"></a> 
+          </span>
+            <a href="" ng-click="toggleArtists()" >See More...</a>
+            </li>
+            </ul></div>
 				<fb:login-button id="sslogo" size="medium" scope="email"
 					onlogin="checkLoginState('U');"></fb:login-button>
 					<div id="ssname" href=""></div>
@@ -675,6 +638,19 @@ Kalimba_top
 			<!-- Player -->
 			<div ng-include="" src="'player/player.html'"
 				ng-controller="PlayerController"></div>
+			<div class="bannerAdBottomBelowplayer">
+			<div class="center">
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Ads_bottom_banner -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:320px;height:50px"
+     data-ad-client="ca-pub-1131524669343726"
+     data-ad-slot="6306377890"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+			</div>
 		</div>
 	</form>
 </body>

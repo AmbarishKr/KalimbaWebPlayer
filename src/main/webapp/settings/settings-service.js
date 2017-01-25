@@ -40,7 +40,7 @@ angular.module('jamstash.settings.service', [])
     		
     		 Url : "http://jamstash.com/#/archive/",
     		 Username: "jamuser",
-    	        Password: "support1!",
+    	        Password: "enc:737570706f72743121",
     	        Server: "http://www.kalimbaradio.com:4040",
         Timeout: 20000,
         Protocol: "jsonp",

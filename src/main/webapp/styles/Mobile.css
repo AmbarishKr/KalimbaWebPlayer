@@ -86,7 +86,7 @@
 @media only screen and (max-width: 600px) {
 	.smcolumn {
 		width: 100%;
-		height: calc(100% - 125px);
+		height: calc(100% - 200px);
 		/*background: rgba(255, 255, 255, 0.8);*/
 		border-bottom; none;
 		min-width: 292px;

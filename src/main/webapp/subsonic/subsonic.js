@@ -99,6 +99,7 @@ angular.module('jamstash.subsonic.controller', ['jamstash.subsonic.service', 'ja
                 $scope.showPodcast = true;
                 break;
             default:
+            	 $rootScope.showIndex = true;
                 break;
         }
     };

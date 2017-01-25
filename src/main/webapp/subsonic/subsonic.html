@@ -105,13 +105,25 @@
 			</div>
 			<div id="userImg"></div>
 			<div style="height: 50px">&nbsp;</div>
-			<ul class="tablist">
+			<ul id="AutoAlbumContainer" class="simplelist mainlist noselect">
+					<li class="index" id="auto">Auto Albums</li>
+					<li class="item" ng-repeat="o in AutoAlbums" id="{{o.id}}"
+						ng-click="getAlbumListBy(o.id)"
+						ng-class="{'selected': selectedAutoAlbum == o.id }"><span>{{o.name}}</span>
+						<div class="floatright">
+							<a href="" class="nextprev hover" id="random" title="Previous"
+								ng-click="getAlbumListBy(o.id, 'prev')" stop-event="click">&lsaquo;</a>
+							<a href="" class="nextprev hover" id="random" title="Next"
+								ng-click="getAlbumListBy(o.id, 'next')" stop-event="click">&rsaquo;</a>
+						</div></li>
+				</ul>
+			<!--  <ul class="tablist">
 				<li class="" ng-class="{'selected': setIndexSelected }"
-					ng-click="toggleIndex()"><a href="">Artists</a></li>
-				<li class="" ng-class="{'selected': setPlaylistSelected }"
-					ng-click="togglePlaylist()"><a href="">Playlist</a></li>
+					ng-click="toggleIndex()"><a href="">Artists</a></li>-->
+				<!--<li class="" ng-class="{'selected': setPlaylistSelected }"
+					ng-click="togglePlaylist()"><a href="">Playlist</a></li>-->
 				<!-- <li class="" ng-click="togglePodcast()"><a href="">Podcasts</a></li>-->
-			</ul>
+			<!--  </ul> -->
 			<div class="clear"></div>
 			<div id="IndexContainer" class="leftsubsection" ng-show="showIndex">
 				<!-- <select id="MusicFolders" class="folders" ng-model="$root.SelectedMusicFolder" ng-options="o.name for o in MusicFolders"></select>-->
@@ -130,7 +142,7 @@
                     </li>
                 </ul>-->
 				<!-- Shortcut -->
-				<ul class="simplelist mainlist noselect" ng-show="shortcut.length">
+			<!-- 	<ul class="simplelist mainlist noselect" ng-show="shortcut.length">
 					<li class="index" title="Scroll to Top"
 						data-bind="click: $root.scrollToTop"><a>Shortcuts</a></li>
 					<ul class="simplelist mainlist noselect" ng-repeat="o in shortcut">
@@ -138,7 +150,7 @@
 							ng-class="{'selected': selectedArtist == o.id}"><span
 							ng-bind-html="o.name"></span></li>
 					</ul>
-				</ul>
+				</ul> -->
 				<!-- Artist -->
 				<ul class="simplelist mainlist noselect" ng-repeat="o in index">
 					<li class="index" title="Scroll to Top" id="{{o.name}}"

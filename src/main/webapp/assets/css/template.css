@@ -8773,7 +8773,7 @@ img {
 }
 
 .site-navbar {
-	background: #fff;
+	background: -webkit-gradient(linear,0 0,0 100%,from(#fff),color-stop(0.85,#f1f1f1),to(#e5e5e5));
 	box-shadow: 0 1px 0 0 rgba(0, 0, 0, .1);
 	margin: 0;
 	z-index: 999;

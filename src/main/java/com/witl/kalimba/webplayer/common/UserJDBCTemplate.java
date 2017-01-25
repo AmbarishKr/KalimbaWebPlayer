@@ -23,8 +23,8 @@ public class UserJDBCTemplate {
 	public void create(User user)
    {
 	
-	String SQLCNT="select count(*) from USERS where email=? and user_type=?";
-	int cnt=jdbcTemplateObject.queryForInt(SQLCNT,user.getEmail(),user.getUserType());
+	String SQLCNT="select count(*) from USERS where email=?";
+	int cnt=jdbcTemplateObject.queryForInt(SQLCNT,user.getEmail());
 	System.out.println("cnt======"+cnt);
 	if(cnt==0){
       String SQL = "insert into USERS (email, name, first_name, last_name, gender, birthday, location, hometown, relationship, timezone, provider, provider_id, login_time,creation_date, user_type) values (?,?,?,?,?,?,?,?,?,?,?,?,sysdate(),sysdate(),?)";
@@ -34,9 +34,9 @@ public class UserJDBCTemplate {
       return;
 	}
 	else{
-		String SQL = "update USERS set login_time=sysdate(),name=?,first_name=?, last_name=?, gender=?, birthday=?,location=?,hometown=?,relationship=?,timezone=?,provider=?,provider_id=? where email=? and user_type=?";
+		String SQL = "update USERS set login_time=sysdate(),name=?,first_name=?, last_name=?, gender=?, birthday=?,location=?,hometown=?,relationship=?,timezone=?,provider=?,provider_id=?,user_type=? where email=? ";
 	      
-	      jdbcTemplateObject.update( SQL, user.getName(), user.getFirst_Name(), user.getLast_Name(), user.getGender(), user.getBirthday(),user.getLocation(),user.getHometown(),user.getRelationship(),user.getTimezone(),user.getProvider(),user.getProvider_id(),user.getEmail(),user.getUserType());
+	      jdbcTemplateObject.update( SQL, user.getName(), user.getFirst_Name(), user.getLast_Name(), user.getGender(), user.getBirthday(),user.getLocation(),user.getHometown(),user.getRelationship(),user.getTimezone(),user.getProvider(),user.getProvider_id(),user.getUserType(),user.getEmail());
 	      System.out.println("update Record Name = " + user.getName() + " Email = " + user.getEmail());
 	      return;
 	}

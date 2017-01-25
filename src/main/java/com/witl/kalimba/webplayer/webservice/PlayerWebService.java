@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.witl.kalimba.webplayer.common.Payment;
 import com.witl.kalimba.webplayer.common.Transaction;
+import com.witl.kalimba.webplayer.common.User;
 import com.witl.kalimba.webplayer.common.UserJDBCTemplate;
 import com.witl.kalimba.webplayer.dao.PaymentDao;
 import com.witl.kalimba.webplayer.dao.TransactionDao;
@@ -50,6 +51,35 @@ public class PlayerWebService {
 		}
 	 
 	    return result;
+		
+	}
+	
+	@GET
+	//@Path("/getDownloadValidation")
+	//@Produces("application/json")
+	@RequestMapping("/setUserDb")
+	
+	public @ResponseBody String setUserDb(@QueryParam("email_id") String email_id,@QueryParam("name") String name,@QueryParam("first_name")String first_name,@QueryParam("last_name")String last_name,@QueryParam("gender")String gender,@QueryParam("birthday")String birthday,@QueryParam("location")String location,@QueryParam("hometown")String hometown,@QueryParam("relationship")String relationship,@QueryParam("timezone")String timezone,@QueryParam("provider")String provider,@QueryParam("provider_id") String provider_id,@QueryParam("user_type")String user_type){
+		System.out.println("INside rest controller");
+		//transactionDao = new TransactionDao();
+		
+		
+			User user = new User();
+			user.setEmail(email_id);
+			user.setName(name);
+			user.setFirst_Name(first_name);
+			user.setLast_Name(last_name);
+			user.setGender(gender);
+			user.setBirthday(birthday);
+			user.setLocation(location);
+			user.setHometown(hometown);
+			user.setRelationship(relationship);
+			user.setTimezone(timezone);
+			user.setProvider(provider_id);
+			user.setProvider_id(Integer.parseInt(provider_id));
+			user.setUserType(user_type);
+			userDAO.create(user);
+		    return "updated";
 		
 	}
 

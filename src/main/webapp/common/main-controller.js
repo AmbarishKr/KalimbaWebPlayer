@@ -312,6 +312,14 @@ angular.module('JamStash')
         window.alert(elm.getBoundingClientRect().left);
     };
     $scope.download = function (id, counter) {
+    	
+    	if($rootScope.user.email==undefined||$rootScope.user.email==''||$rootScope.user.email==null)
+		 {
+		 alert("Please Login to continue");
+		 return false;	
+		 
+		 }
+    	
         $.ajax({
             url: globals.BaseURL() + '/getUser.view?' + globals.BaseParams() + '&username=' + globals.settings.Username,
             method: 'GET',
@@ -452,7 +460,7 @@ angular.module('JamStash')
     	$rootScope.user.name = response.name;
     	$rootScope.user.id = response.id;
 		//alert(globals.user.name);
-    	if((typeof response.email ==='undefined' || response.email ===null)&&typeof response.email !=='undefined'){
+    	if(response.email==undefined||response.email==''||response.email==null){
     		
     		$rootScope.user.email = response.id+"@facebook.com";
         }else{
@@ -469,8 +477,21 @@ angular.module('JamStash')
 		//document.forms[0].bio.value = response.bio;
     	$rootScope.user.relationship = response.relationship_status;
     	$rootScope.user.timezone = response.timezone;
-    	$rootScope.user.userType = 'A';
+    	$rootScope.user.userType = 'U';
     	$rootScope.user.providerId = "1";
+    	$rootScope.user.provider = "FB";
+    	
+    	
+			$.ajax({
+		        url: "http://m.kalimbaradio.com/setUserDb?email_id="+$rootScope.user.email+"&name="+$rootScope.user.name+"&first_name="+$rootScope.user.firstName+"&last_name="+$rootScope.user.lastName+"&gender="+$rootScope.user.gender+"&birthday="+$rootScope.user.birthday+"&location="+$rootScope.user.location+"&hometown="+$rootScope.user.hometown+"&relationship="+$rootScope.user.relationship+"&timezone="+$rootScope.user.timezone+"&provider="+$rootScope.user.provider+"&provider_id="+$rootScope.user.providerId+"&user_type="+$rootScope.user.userType
+		    }).then(function(data) {
+		       //alert(data);
+		       if(data==='success')
+		    	   {
+		    	//  alert("SSSSS");
+		    	   }
+		    });
+		
     };
     
     /* Launch on Startup */

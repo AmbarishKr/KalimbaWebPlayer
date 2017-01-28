@@ -87,7 +87,7 @@ public class GenerateToken {
 		// http cleient call
 		String xmlString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
 				+ "<API3G>"
-				+ "<CompanyToken>68B90B5E-25F6-4146-8AB1-C7A3A0C41A7F</CompanyToken>"
+				+ "<CompanyToken>56F0DEA8-37FA-4429-AF74-2C03B6DD71FB</CompanyToken>"
 				+ "<Request>createToken</Request>"
 				+ "<Transaction>"
 				+ "<PaymentAmount>"
@@ -95,14 +95,14 @@ public class GenerateToken {
 				+ "</PaymentAmount>"
 				+ "<PaymentCurrency>USD</PaymentCurrency>"
 				+ "<CompanyRef>49FKEOA</CompanyRef>"
-				+ "<RedirectURL>http://www.kalimbaradio.com/getTransaction</RedirectURL>"
-				+ "<BackURL>http://www.kalimbaradio.com/</BackURL>"
+				+ "<RedirectURL>http://www.kalimbaradio.com/KalimbaWeb/getTransaction</RedirectURL>"
+				+ "<BackURL>http://www.kalimbaradio.com/KalimbaWeb</BackURL>"
 				+ "<CompanyRefUnique>0</CompanyRefUnique>"
 				+ "<PTL>5</PTL>"
 				+ "</Transaction>"
 				+ "<Services>"
 				+ "<Service>"
-				+ "<ServiceType>949</ServiceType>"
+				+ "<ServiceType>6238</ServiceType>"
 				+ "<ServiceDescription>Kalimba Radio music purchase</ServiceDescription>"
 				+ "<ServiceDate>2013/12/20 19:00</ServiceDate>" + "</Service>"
 				+ "</Services>" + "</API3G>";
@@ -115,7 +115,7 @@ public class GenerateToken {
 		httpRequest.setEntity(xmlEntity);
 		HttpResponse httpresponse = httpClient.execute(httpRequest);
 		String result = EntityUtils.toString(httpresponse.getEntity());
-		System.out.println(result);
+		System.out.println("result:"+result);
 
 		DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 		InputSource is = new InputSource();
@@ -123,16 +123,21 @@ public class GenerateToken {
 
 		Document doc = db.parse(is);
 
-		Node node = doc.getElementsByTagName("TransToken").item(0).getFirstChild();
+		String status="Error";
+		if(doc.getElementsByTagName("TransToken")!=null){
+			Node node =doc.getElementsByTagName("TransToken").item(0).getFirstChild();
 		System.out.println("Value of token=" + node.getNodeValue());
 
 		Node check = doc.getElementsByTagName("ResultExplanation").item(0).getFirstChild();
-		System.out.println("check success or failure =" + check.getNodeValue());
+		status=check.getNodeValue();
+		System.out.println("check success or failure =" + status);
 		tokenId = node.getNodeValue();
-
+		}else{
+			tokenId="ERROR";
+		}
 		payment = new Payment();
 		payment.setAmonut(pricefloat);
-		payment.setCreatetokenstatus(check.getNodeValue());
+		payment.setCreatetokenstatus(status);
 		payment.setEmailid(email);
 		payment.setSongidstring(items);
 		payment.setTokenid(tokenId);
@@ -151,7 +156,7 @@ public class GenerateToken {
 	public ModelAndView verifyTransaction(HttpServletRequest request,
 			HttpServletResponse response, HttpSession session) throws IOException {
 		
-		System.out.println("Iinside payment returns");
+		System.out.println("Inside payment returns");
 		
 		
 		String tnsId = request.getParameter("TransID");

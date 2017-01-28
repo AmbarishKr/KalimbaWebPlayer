@@ -41,6 +41,7 @@ angular.module('ngCart', ['ngCart.directives','ngRoute'])
         this.addItem = function (id, name, price, quantity, data,img) {
 
             var inCart = this.getItemById(id);
+            //alert(price+","+name)
 
             if (typeof inCart === 'object'){
                 //Update quantity of an item if it's already in the cart

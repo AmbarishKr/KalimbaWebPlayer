@@ -57,8 +57,14 @@ angular.module('ngCart', ['ngCart.directives'])
 
         this.addItem = function (id, name, price, quantity, data,img) {
         	
+        	var priceInt=parseInt(price)
+        	var realPrice;
+        	if(priceInt==9999)
+        		realPrice=0;
+        	else
+        	 realPrice= priceInt/100;
         	
-        	var realPrice= price/100;
+        	// alert(price+","+name+","+realPrice)
 
             var inCart = this.getItemById(id);
 
@@ -416,9 +422,9 @@ angular.module('ngCart', ['ngCart.directives'])
     	if(parseInt(total)!=0){
     		//To be commented to activate the payment
     		
-    		alert("Purchase Disabled. Please contact us at info@kalimbaradio.com");
+    	/*	alert("Purchase Disabled. Please contact us at info@kalimbaradio.com");
     		$('#spinner').hide();
-    		return false; 
+    		return false; */
     		
     		//To be commented to activate the payment
     	
@@ -429,7 +435,13 @@ angular.module('ngCart', ['ngCart.directives'])
     		  params: {'itemsdetails':details, 'email':email}
     		}).then(function successCallback(response) {
     			console.log(response);
+    			
     			var token = response.data;
+    			if(token=="ERROR"){
+    				alert("Problem redirecting to payment gateway contact:info@kalimbaradio.com");
+    				return false;
+    			}
+    				
     		
     			window.location.href="https://secure.3gdirectpay.com/pay.asp?ID="+token;
     		    

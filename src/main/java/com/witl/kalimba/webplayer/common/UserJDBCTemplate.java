@@ -78,7 +78,7 @@ public class UserJDBCTemplate {
 	int cnt=jdbcTemplateObject.queryForInt(SQLCNT,TrnxToken,pnrId);
 	System.out.println("cnt======"+cnt);
 	if(cnt>0){
-		String SQL = "update Transaction set isDownloaded='YES' where tnsId=? and pnrId=? and isDownloaded <> 'YES'";
+		String SQL = "update Transaction set isDownloaded='YES',row_timestamp=sysdate() where tnsId=? and pnrId=? and isDownloaded <> 'YES'";
 	      
 	      jdbcTemplateObject.update( SQL, TrnxToken,pnrId);
 	      //System.out.println("update Record Name = " + user.getName() + " Email = " + user.getEmail());

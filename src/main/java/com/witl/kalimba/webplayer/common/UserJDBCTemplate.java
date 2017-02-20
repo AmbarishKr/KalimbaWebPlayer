@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.hibernate.mapping.Map;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.witl.kalimba.webplayer.common.User;
@@ -71,9 +72,9 @@ public class UserJDBCTemplate {
       return;
    }
 
-   public int validateTransaction(String pnrId, String TrnxToken)
+   public String validateTransaction(String pnrId, String TrnxToken)
    {
-	
+	String songs="";
 	String SQLCNT="select count(*) from Transaction where tnsId=? and pnrId=? and isDownloaded <> 'YES'";
 	int cnt=jdbcTemplateObject.queryForInt(SQLCNT,TrnxToken,pnrId);
 	System.out.println("cnt======"+cnt);
@@ -82,9 +83,12 @@ public class UserJDBCTemplate {
 	      
 	      jdbcTemplateObject.update( SQL, TrnxToken,pnrId);
 	      //System.out.println("update Record Name = " + user.getName() + " Email = " + user.getEmail());
+	      String sqlSongId="select songidstring from Payment where tokenid=?";
+	  	 songs =(String)jdbcTemplateObject.queryForObject(sqlSongId,new Object[] { TrnxToken }, String.class);
+	  	
 	     
 	}
-	  return cnt ;
+	  return songs;
    }
    
 }

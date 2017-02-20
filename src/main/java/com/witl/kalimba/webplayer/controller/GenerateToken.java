@@ -60,7 +60,7 @@ public class GenerateToken {
 			HttpServletResponse response, HttpSession session)
 			throws SAXException, IOException, ParserConfigurationException,
 			URISyntaxException {
-		String items="",email="", price="";
+		String items="",email="", price="",songName="",artist="";
 		
 		if(request.getParameter("itemsdetails")!=null){
 		items = (String) request.getParameter("itemsdetails");
@@ -69,6 +69,12 @@ public class GenerateToken {
 		if(request.getParameter("email")!=null){
 		email=request.getParameter("email");
 		}
+		if(request.getParameter("songName")!=null){
+			songName=request.getParameter("songName");
+			}
+		if(request.getParameter("artist")!=null){
+			artist=request.getParameter("artist");
+			}
 		
 		listOfSongs = items;
 
@@ -87,25 +93,32 @@ public class GenerateToken {
 		// http cleient call
 		String xmlString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
 				+ "<API3G>"
-				+ "<CompanyToken>68B90B5E-25F6-4146-8AB1-C7A3A0C41A7F</CompanyToken>"
+				+ "<CompanyToken>56F0DEA8-37FA-4429-AF74-2C03B6DD71FB</CompanyToken>"
 				+ "<Request>createToken</Request>"
 				+ "<Transaction>"
+				+ "<customerEmail>"+email+"</customerEmail>"
 				+ "<PaymentAmount>"
 				+ newprice
 				+ "</PaymentAmount>"
-				+ "<PaymentCurrency>USD</PaymentCurrency>"
+				+ "<PaymentCurrency>ZMW</PaymentCurrency>"
 				+ "<CompanyRef>49FKEOA</CompanyRef>"
-				+ "<RedirectURL>http://www.kalimbaradio.com/getTransaction</RedirectURL>"
-				+ "<BackURL>http://www.kalimbaradio.com/</BackURL>"
+				+ "<RedirectURL>http://m.kalimbaradio.com/getTransaction</RedirectURL>"
+				+ "<BackURL>http://m.kalimbaradio.com/</BackURL>"
 				+ "<CompanyRefUnique>0</CompanyRefUnique>"
 				+ "<PTL>5</PTL>"
 				+ "</Transaction>"
 				+ "<Services>"
 				+ "<Service>"
-				+ "<ServiceType>949</ServiceType>"
+				+ "<ServiceType>6238</ServiceType>"
 				+ "<ServiceDescription>Kalimba Radio music purchase</ServiceDescription>"
 				+ "<ServiceDate>2013/12/20 19:00</ServiceDate>" + "</Service>"
-				+ "</Services>" + "</API3G>";
+				+ "</Services>" 
+				+ "<Additional>" 
+				+ "<BlockPayment>BT</BlockPayment>"
+				+ "<BlockPayment>PP</BlockPayment>"
+				+ "<BlockPayment>XP</BlockPayment>"
+				+ "</Additional>" +
+				"</API3G>";
 		DefaultHttpClient httpClient = new DefaultHttpClient();
 
 		HttpPost httpRequest = new HttpPost("https://secure.3gdirectpay.com/API/v5/");
@@ -136,6 +149,8 @@ public class GenerateToken {
 		payment.setEmailid(email);
 		payment.setSongidstring(items);
 		payment.setTokenid(tokenId);
+		payment.setSongName(songName);
+		payment.setArtist(artist);
 
 		paymentDao.save(payment);
 		List songIdList=getSongList(listOfSongs);

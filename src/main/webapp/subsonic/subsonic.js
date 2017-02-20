@@ -15,12 +15,12 @@ angular.module('jamstash.subsonic.controller', ['jamstash.subsonic.service', 'ja
     $scope.Server = globals.settings.Server;
     $scope.playlistMenu = [];
     $scope.AutoAlbums = [
-        { id: "random", name: "Random" },
-        { id: "newest", name: "Latest" },
+       /* { id: "random", name: "Random" },*/
+        { id: "newest", name: "New Music" },
         /*{ id: "starred", name: "Starred" },*/
         /*{ id: "highest", name: "Top Rated" },*/
-        { id: "frequent", name: "Most Played" },
-        { id: "recent", name: "Recently Played" }
+        { id: "frequent", name: "Trending" },
+        /*{ id: "recent", name: "Recently Played" }*/
     ];
     $scope.SelectedAlbumSort = globals.settings.DefaultAlbumSort;
     $scope.AlbumSort = globals.AlbumSorts;

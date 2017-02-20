@@ -39,15 +39,15 @@ public class PlayerWebService {
 	public @ResponseBody String getDownloadValidation(@QueryParam("PnrID") String PnrID,@QueryParam("tnsId") String tnsId){
 		System.out.println("INside rest controller");
 		//transactionDao = new TransactionDao();
-		int res=userDAO.validateTransaction(PnrID, tnsId);
+		String res=userDAO.validateTransaction(PnrID, tnsId);
 		
 		String result="";
-		if(res>0){
-			result="success";
+		if(res==""){
+			result="failure";
 		}
 		else
 		{
-			result="failure";
+			result=res;
 		}
 	 
 	    return result;

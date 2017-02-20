@@ -4,8 +4,11 @@
         <!--<a class="remove" href="" title="Remove Song" ng-click="removeSongFromQueue(o)" stop-event="click"></a>-->
         <a class="play" href="" title="Start Playing From This Song" ng-click="playFrom($index)" stop-event="click"></a>
 
-         <a class="download" href="" title="Download Song" ng-show="o.track > 0" ng-click="download(o.id)"></a>
-        <!-- <a href="" title="Favorite" ng-class="{'favorite': o.starred, 'rate': !o.starred}" ng-click="updateFavorite(o)" stop-event="click"></a>-->
+         <a class="download" href="" title="Download Song" ng-show="o.track == 9999" ng-click="download(o.id)"></a> 
+          <a class="buy1K" href="" title="Download Song" ng-show="o.track == 10" ng-click="goToPayment(o.track,o.id)"></a>
+        <a class="buy2K" href="" title="Download Song" ng-show="o.track == 20" ng-click="goToPayment(o.track,o.id)"></a>
+        
+         <!-- <a href="" title="Favorite" ng-class="{'favorite': o.starred, 'rate': !o.starred}" ng-click="updateFavorite(o)" stop-event="click"></a>-->
         <div class="clear"></div>
     
      <!-- div class="track floatleft" ng-bind-html="o.track"></div>  -->
@@ -23,7 +26,7 @@
         <div class="clear"></div>
     </div>
     <!-- <div class="track floatleft" > </div> -->
-  <div class="title floatleft" title="{{o.description}}" ng-bind-html="o.name" style="margin-left: 80px;"></div>
+  <div class="title floatleft" title="{{o.description}}" ng-bind-html="o.name" style="margin-left: 37px;"></div>
 
     <span class="artist floatleft" ng-bind-html="o.artist"></span>
    <!--   <div ng-show="o.album && itemType !== 'archive'">

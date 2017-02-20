@@ -15,6 +15,11 @@ public class Payment implements Serializable {
 	private String emailid;
 	
 	private String songidstring;
+	private String songName;
+	
+
+	private String artist;
+
 	float amonut;
 	public String createtokenstatus;
 
@@ -56,6 +61,21 @@ public class Payment implements Serializable {
 
 	public void setCreatetokenstatus(String createtokenstatus) {
 		this.createtokenstatus = createtokenstatus;
+	}
+	public String getSongName() {
+		return songName;
+	}
+
+	public void setSongName(String songName) {
+		this.songName = songName;
+	}
+
+	public String getArtist() {
+		return artist;
+	}
+
+	public void setArtist(String artist) {
+		this.artist = artist;
 	}
 
 }

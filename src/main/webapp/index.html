@@ -11,9 +11,9 @@
 <meta name=viewport content="width=device-width, initial-scale=1">
 <title ng-bind="Page.title()">Kalimba Radio</title>
 <script type="text/javascript">
-/* if (screen.width > 699) {
+ if (screen.width > 699) {
 document.location = "http://www.kalimbaradio.com";
-} */
+} 
 </script>
 
 <link href="images/favicon_webplayer.ico" rel="shortcut icon" />
@@ -27,7 +27,7 @@ document.location = "http://www.kalimbaradio.com";
 	href="bower_components/fancybox/source/jquery.fancybox.css" />
 <!-- endbower -->
 <!-- endbuild -->
-<link href="styles/Style.css" rel="stylesheet" type="text/css"
+<link href="styles/Style.css?1.1" rel="stylesheet" type="text/css"
 	data-name="main" />
 <link href="styles/Mobile.css" rel="stylesheet" type="text/css"
 	data-name="main" />
@@ -106,24 +106,24 @@ document.location = "http://www.kalimbaradio.com";
 				    			 
 				 var tokenId=get('tnsId');
 				 var PnrID=get('PnrID');
-				 var scopeCart = angular.element(document.getElementById("template/ngCart/addtocart.html")).scope();
-				 var total = scopeCart.ngCart.totalCost();
-				 var Items= scopeCart.ngCart.getItemId();
+				 //var scopeCart = angular.element(document.getElementById("template/ngCart/addtocart.html")).scope();
+				 //var total = scopeCart.ngCart.totalCost();
+				// var Items= scopeCart.ngCart.getItemId();
 				// var CCDapproval=get('CCDapproval');
 				// var CompanyRef=get('CompanyRef');
-				if((total=='0'||isNaN(total))&&Items.length>0){
+				/*if((total=='0'||isNaN(total))&&Items.length>0){
 					downloadSong();
 				}
-				else if(tokenId !==undefined && PnrID !==undefined)
+				else*/ if(tokenId !==undefined && PnrID !==undefined)
 				 {
 					 $(document).ready(function() {
 						    $.ajax({
-						        url: "http://www.kalimbaradio.com/getDownloadValidation?PnrID="+PnrID+"&tnsId="+tokenId
+						        url: "http://m.kalimbaradio.com/getDownloadValidation?PnrID="+PnrID+"&tnsId="+tokenId
 						    }).then(function(data) {
-						       alert(data);
-						       if(data==='success')
+						       //alert(data);
+						       if(data!=='failure')
 						    	   {
-						    	   downloadSong();
+						    	   downloadSong(data);
 									setTimeout(function(){},200000);
 						    	   }
 						    });
@@ -142,20 +142,22 @@ document.location = "http://www.kalimbaradio.com";
 			 return decodeURIComponent(name[1]);
 			 }
 
-     function downloadSong(){
-    	 var scopeCart = angular.element(document.getElementById("template/ngCart/addtocart.html")).scope();
+     function downloadSong(items){
+    	 //var scopeCart = angular.element(document.getElementById("template/ngCart/addtocart.html")).scope();
 		 //setTimeout(function(){alert(scopeCart.token)},50000);			 
 		 var scopeMain = angular.element(document.getElementById("loginElement")).scope();
-		 scopeCart.$apply(function() {			
-			 var items=  scopeCart.ngCart.getItemId();
+		 			
+			// var items=  scopeCart.ngCart.getItemId();
+			var itemArray=items.split(',');
 			 var i=0;
-			 angular.forEach(items, function (item) {
-		    		var id=item.getId();
+			 angular.forEach(itemArray, function (id) {
+		    	
 		    		//alert(id);
+		    		if(id!=="")
 		    		scopeMain.download(id, i);
 		    		i++;
 		         }); 
-			 scopeCart.ngCart.empty();			
+			// scopeCart.ngCart.empty();			
 		
 		 });       
          }
@@ -547,10 +549,10 @@ document.location = "http://www.kalimbaradio.com";
               </button>
               <h1 class="navbar-brand"><a href="index.html"><img src="images/kalimba_logo-01.png"  alt="Kalimba Radio Free African music streaming"></a></h1>
             </div>
-          
-				<div id="spinner" class="spinner" style="display:none;">
+          <div id="spinner" class="spinner" style="display:none;">
     <img id="img-spinner" src="images/ajax_loader_gray_128.gif" style="width:128px;height:128px;margin-top:15%;" alt="Loading"/>
 </div>
+				
             <div class="collapse navbar-collapse" id="navbar-collapse-1">
               <ul id="navigation" class="nav navbar-nav navbar-right">
       
@@ -588,7 +590,7 @@ document.location = "http://www.kalimbaradio.com";
 				
         
       </header>
-			
+		
 			<div id="content">
 				<!-- Main -->
 				<div ng-view=""></div>

@@ -1022,8 +1022,8 @@ ul.songlist .row .itemactions
 ul.songlist .row .itemactions a
 {
     float: left;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     display: block;
     margin-left: 10px;
 }
@@ -1076,8 +1076,25 @@ ul.songlist .row a.download
 }
 ul.songlist .row a.download:hover
 {
-    background: url('../images/download_gd_9x12.png') no-repeat 5px center #DEECFB;
+    background: url('../images/download_gl_9x12.png') no-repeat 5px center #DEECFB;
 }
+ul.songlist .row a.buy1K
+{
+    background: url('../images/buy1K.gif') no-repeat 0px center;
+}
+ul.songlist .row a.buy1K:hover
+{
+    background: url('../images/buy1K.gif') no-repeat 0px center #DEECFB;
+}
+ul.songlist .row a.buy2K
+{
+    background: url('../images/buy2K.gif') no-repeat 0px center;
+}
+ul.songlist .row a.buy2K:hover
+{
+    background: url('../images/buy2K.gif') no-repeat 0px center #DEECFB;
+}
+
 ul.songlist .row a.add
 {
     background: url('../images/plus_gl_8x8.png') no-repeat 6px center;

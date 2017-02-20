@@ -313,12 +313,12 @@ angular.module('JamStash')
     };
     $scope.download = function (id, counter) {
     	
-    	if($rootScope.user.email==undefined||$rootScope.user.email==''||$rootScope.user.email==null)
+    	/*if($rootScope.user.email==undefined||$rootScope.user.email==''||$rootScope.user.email==null)
 		 {
 		 alert("Please Login to continue");
 		 return false;	
 		 
-		 }
+		 }*/
     	
         $.ajax({
             url: globals.BaseURL() + '/getUser.view?' + globals.BaseParams() + '&username=' + globals.settings.Username,
@@ -352,6 +352,37 @@ angular.module('JamStash')
             data.selected = true;
         }
     };
+    
+    $scope.goToPayment = function (price,songObject) {
+    	/*if($rootScope.user.email==undefined||$rootScope.user.email==''||$rootScope.user.email==null)
+		 {
+		 alert("Please Login to continue");
+		 return false;
+		 
+		 }*/
+    	//alert(songObject)
+    	$('#spinner').show();
+    	var realPrice=price/10;
+    	var email=$rootScope.user.email;
+    	var data = 'totalPrice='+realPrice ;
+   	 $http({
+   		  method: 'GET',
+   		  url: 'getToken?'+data,
+   		  params: {'itemsdetails':songObject.id, 'email':email,'songName':songObject.name,'artist':songObject.artist}
+   		}).then(function successCallback(response) {
+   			console.log(response);
+   			var token = response.data;
+   		
+   			window.location.href="https://secure.3gdirectpay.com/pay.asp?ID="+token;
+   		    
+   		  }, function errorCallback(erresponse) {
+   			  console.log(erresponse);
+   		    // called asynchronously if an error occurs
+   		    // or server returns response with an error status.
+   		  });
+   	
+    }
+    
 
     /**
      * Returns true if the target of this event is an input

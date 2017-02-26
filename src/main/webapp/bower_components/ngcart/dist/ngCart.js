@@ -62,7 +62,7 @@ angular.module('ngCart', ['ngCart.directives'])
         	if(priceInt==9999)
         		realPrice=0;
         	else
-        	 realPrice= priceInt/100;
+        	 realPrice= priceInt/10;
         	
         	// alert(price+","+name+","+realPrice)
 
@@ -419,7 +419,7 @@ angular.module('ngCart', ['ngCart.directives'])
     		details=details+item.getId()+',';
          });
     	
-    	if(parseInt(total)!=0){
+    	if(parseFloat(total)!=0){
     		//To be commented to activate the payment
     		
     	/*	alert("Purchase Disabled. Please contact us at info@kalimbaradio.com");

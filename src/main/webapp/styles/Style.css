@@ -408,7 +408,7 @@ span.apiversion
     border: 1px ;/*solid #39b54a;*/
     /* border-left: 1px solid #ddd; */
     position: fixed;
-    top: 80px;
+    top: 120px;
     right: 0%;
 	margin-bottom: -42px;
     opacity: .98;
@@ -1006,10 +1006,10 @@ ul.songlist .row img
 {
     display: block;
     float: left;
-    margin: 0 5px;
-    padding: 2px;
-    height: 15px;
-    width: 10px;
+    margin: 0 0px;
+    padding: 0px;
+    height: 24px;
+    width: 24px;
     margin-top: 8px;
 }
 ul.songlist .row .itemactions
@@ -1076,6 +1076,22 @@ ul.songlist .row a.download
 ul.songlist .row a.download:hover
 {
     background: url('../images/download_gd_9x12.png') no-repeat 5px center #DEECFB;
+}
+ul.songlist .row a.buy1K
+{
+    background: url('../images/buy1K.gif') no-repeat 0px center;
+}
+ul.songlist .row a.buy1K:hover
+{
+    background: url('../images/buy1K.gif') no-repeat 0px center #DEECFB;
+}
+ul.songlist .row a.buy2K
+{
+    background: url('../images/buy2K.gif') no-repeat 0px center;
+}
+ul.songlist .row a.buy2K:hover
+{
+    background: url('../images/buy2K.gif') no-repeat 0px center #DEECFB;
 }
 ul.songlist .row a.add
 {

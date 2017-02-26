@@ -9191,7 +9191,7 @@ function $LocaleProvider(){
             lgSize: 3
           }
         ],
-        CURRENCY_SYM: '$'
+        CURRENCY_SYM: 'ZK'
       },
 
       DATETIME_FORMATS: {

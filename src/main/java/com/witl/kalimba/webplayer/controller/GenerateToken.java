@@ -93,10 +93,10 @@ public class GenerateToken {
 				+ "<PaymentAmount>"
 				+ newprice
 				+ "</PaymentAmount>"
-				+ "<PaymentCurrency>USD</PaymentCurrency>"
+				+ "<PaymentCurrency>ZMW</PaymentCurrency>"
 				+ "<CompanyRef>49FKEOA</CompanyRef>"
-				+ "<RedirectURL>http://www.kalimbaradio.com/KalimbaWeb/getTransaction</RedirectURL>"
-				+ "<BackURL>http://www.kalimbaradio.com/KalimbaWeb</BackURL>"
+				+ "<RedirectURL>http://www.kalimbaradio.com/getTransaction</RedirectURL>"
+				+ "<BackURL>http://www.kalimbaradio.com</BackURL>"
 				+ "<CompanyRefUnique>0</CompanyRefUnique>"
 				+ "<PTL>5</PTL>"
 				+ "</Transaction>"

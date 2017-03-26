@@ -189,11 +189,10 @@ span.apiversion
     height: 20px;
     opacity: .8;
 }
-/* #ssname
+.ssnameGetApp
 {
     position: absolute;
-    top: 25px;
-    right: 35px;
+    right: 50px;
     width: 120px;
     height: 30px;
     border-radius: 32px;
@@ -203,7 +202,7 @@ span.apiversion
     font-size: 15px;
     background: url('../images/facebook_icon.png') no-repeat 5px 3px;   
     cursor: pointer;
-} */
+} 
 
 #ssname {
     position: fixed;
@@ -392,6 +391,44 @@ span.apiversion
 	padding: 2px 2px 0 0;
 }
 #SideBar .submit
+{
+    padding: 0 2px;
+    position: absolute;
+    bottom: 0;
+}
+
+#SideBarPopUp 
+{
+    display: block;
+	min-height: 60%;
+	height: 60%;
+	overflow-y: auto;
+    width: 70%;
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid #39b54a;
+    /* border-left: 1px solid #ddd; */
+    position: fixed;
+    top: 132px;
+    left: 15%;
+	bottom: 100px;
+    opacity: .98;
+}
+#SideBarPopUp .header
+{
+    padding: 10px 4px 6px 4px;
+    font-size: 12px;
+    color: #bbb;
+    font-variant: small-caps;
+    font-weight: bold;
+	text-align: center;
+}
+#SideBarPopUp .headeractions
+{
+	position: absolute;
+	right: 10px;
+	padding: 2px 2px 0 0;
+}
+#SideBarPopUp .submit
 {
     padding: 0 2px;
     position: absolute;
@@ -1430,7 +1467,7 @@ ul.songlist li:hover
     z-index: 100;
 }
 #playercontainer {
-    background: linear-gradient(to bottom, #000000 0%,#3d3d3d 100%);
+    background: linear-gradient(to bottom, #39b54a 0%,#1A5422 100%);
 }
 #audiocontainer
 {
@@ -2045,6 +2082,13 @@ legend
 .dwn-button {
     width: 113px;
     height: 38px;
+    margin-right: 10px;
+    margin-left: 10px;
+    float: left;
+}
+.popup-button {
+    width: 180px;
+    height: 61px;
     margin-right: 10px;
     margin-left: 10px;
     float: left;

@@ -131,6 +131,23 @@ angular.module('JamStash')
             $rootScope.showQueue();
    
     };
+    
+    $rootScope.showPopUp = function () {
+        $('#SideBarPopUp').css('display', 'block');
+       /* $('#right-component').removeClass('lgcolumn_expanded');*/
+    };
+    $rootScope.hidePopUp = function () {
+        $('#SideBarPopUp').css('display', 'none');
+      /*  $('#right-component').addClass('lgcolumn_expanded');*/
+    };
+    $scope.togglePopUp = function () {
+        if ($('#SideBarPopUp').css('display') === 'none') {
+            $rootScope.showPopUp();
+        } else {
+            $rootScope.hidePopUp();
+        }
+    };
+    
     $rootScope.showArtists = function () {
         $('#left-component').css('display', '');
         $('#right-component').removeClass('lgcolumn_expandedleft');

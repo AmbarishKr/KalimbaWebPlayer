@@ -587,6 +587,7 @@ document.location = "http://www.kalimbaradio.com";
 				<fb:login-button id="sslogo" size="medium" scope="email"
 					onlogin="checkLoginState('U');"></fb:login-button>
 					<div id="ssname" href=""></div>
+					<a class="ssnameGetApp" href="" ng-click="togglePopUp()" >Get app  </a>
 				
         
       </header>
@@ -614,6 +615,9 @@ document.location = "http://www.kalimbaradio.com";
             <div class="submit"><img src="images/comment_stroke_gl_12x11.png" /><input type="text" id="ChatMsg" class="chat" title="Hit [Enter] to Post" /></div>
             -->
 			</div>
+			<div id="SideBarPopUp" class="boxshadow" ng-include=""
+				src="'queue/popUp.html'">
+				</div>
 			<!-- <div id="SideBar-Ads"> -->
 			<!--  <div class="center">
 								<a href="https://www.ticketriver.com/event/17427" target="_blank" title="KalimbaRadio Presents OC Osilliation"><img class="tr-event-img" alt="Event's image" src="https://d1d6g07qo35lq3.cloudfront.net/images/event/17427/event447287.JPG"></a>
